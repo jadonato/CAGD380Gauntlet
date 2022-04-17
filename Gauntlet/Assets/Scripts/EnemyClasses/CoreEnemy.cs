@@ -11,16 +11,62 @@ public class CoreEnemy : MonoBehaviour
     public bool alerted;
 
     protected GameObject target;
+    protected List<GameObject> playerList = new List<GameObject>();
     protected NavMeshAgent agent;
+    protected bool zigLeft;
 
     protected void moveToTarget()
     {
         agent.destination = target.transform.position;
+        if(Vector3.Distance(transform.position, target.transform.position) <= agent.stoppingDistance)
+        {
+            agent.speed = 0;
+        }
+        else
+        {
+            agent.speed = speed;
+        }
+        if (Vector3.Distance(transform.position, target.transform.position) > 3)
+        {
+            if (zigLeft)
+            {
+                transform.position -= transform.right * speed/2 * Time.deltaTime;
+            }
+            else
+            {
+                transform.position += transform.right * speed/2 * Time.deltaTime;
+            }
+        }
+        
     }
 
     protected void findTargets()
     {
-        //FindObjectsOfType<>
+        foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            playerList.Add(player);
+        }
+        print(playerList.Count);
+    }
+    protected void closestPlayer()
+    {
+        target = playerList[0];
+        for(int p = 0; p < playerList.Count; p++)
+        {
+            if(Vector3.Distance(transform.position, playerList[p].transform.position) < Vector3.Distance(transform.position, target.transform.position))
+            {
+                target = playerList[p];
+            }
+        }
+        
+    }
+    protected IEnumerator ZigZag()
+    {
+        zigLeft = true;
+        yield return new WaitForSeconds(1);
+        zigLeft = false;
+        yield return new WaitForSeconds(1);
+        StartCoroutine(ZigZag());
     }
     
 }
