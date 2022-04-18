@@ -8,6 +8,7 @@ public class CoreEnemy : MonoBehaviour
     public float speed;
     public float damage;
     public int rank;
+    public Material[] rankColor;
     public bool alerted;
 
     protected GameObject target;
@@ -38,6 +39,13 @@ public class CoreEnemy : MonoBehaviour
             }
         }
         
+    }
+    protected void colorCheck()
+    {
+        if (rank > 0)
+        {
+            GetComponent<MeshRenderer>().material = rankColor[rank - 1];
+        }
     }
 
     protected void findTargets()

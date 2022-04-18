@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Grunt : CoreEnemy
 {
-    public Material[] rankColor;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +26,7 @@ public class Grunt : CoreEnemy
         colorCheck();
     }
 
-    private void colorCheck()
-    {
-        if (rank > 0)
-        {
-            GetComponent<MeshRenderer>().material = rankColor[rank - 1];
-        }
-    }
+    
 
     private void clubAttack()
     {

@@ -17,7 +17,15 @@ public class Generator : MonoBehaviour
     {
         GameObject temp = enemyType;
         Instantiate(temp, transform.position, Quaternion.identity);
-        temp.GetComponent<Grunt>().rank = rank;
+        if (temp.GetComponent<Grunt>())
+        {
+            temp.GetComponent<Grunt>().rank = rank;
+        }
+        if (temp.GetComponent<Demon>())
+        {
+            temp.GetComponent<Demon>().rank = rank;
+        }
+
         yield return new WaitForSeconds(spawnRate);
         StartCoroutine(SpawnEnemy());
     }
