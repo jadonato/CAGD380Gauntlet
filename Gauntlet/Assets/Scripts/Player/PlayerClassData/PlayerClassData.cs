@@ -10,13 +10,13 @@ public class PlayerClassData : ScriptableObject
     [SerializeField] private float _baseHealth;
     [SerializeField] private float _meleeDamage;
     [SerializeField] private float _magicDamage;
-    [SerializeField] private float _defense;
+    [SerializeField] private float _armor;
     [SerializeField] private float _moveSpeed;
 
     public Sprite Sprite { get { return _sprite; } }
     public float BaseHealth { get { return _baseHealth; } }
     public float MeeleDamage { get { return _meleeDamage; } }
     public float MagicDamage { get { return _magicDamage; } }
-    public float Defense { get { return _defense; } }
+    public float Armor { get { return _armor; } }
     public float MoveSpeed { get { return _moveSpeed; } }
 }
