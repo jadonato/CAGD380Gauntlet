@@ -158,5 +158,5 @@ MonoBehaviour:
   alerted: 1
   Range: 10
   projectileSpeed: 1
-  firingRate: 5
+  firingRate: 1
   projectile: {fileID: 9170047050853998127, guid: 4b60e4dd370031f4680eed7e8970cada, type: 3}

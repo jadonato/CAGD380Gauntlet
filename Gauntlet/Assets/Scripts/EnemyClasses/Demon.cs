@@ -35,9 +35,18 @@ public class Demon : CoreEnemy
 
     private void RangedAttack()
     {
-        if(Vector3.Distance(transform.position, target.transform.position) <= Range && !firing)
+        if(Vector3.Distance(transform.position, target.transform.position) <= Range)
         {
-            StartCoroutine(Fire());
+            agent.speed = 0;
+            if (!firing)
+            {
+                StartCoroutine(Fire());
+
+            }
+        }
+        else
+        {
+            agent.speed = speed;
         }
     }
 
@@ -47,11 +56,12 @@ public class Demon : CoreEnemy
         dir = new Vector3(dir.x, 0, dir.z);
         print("Firing Direction is " + dir.normalized);
         GameObject temp = projectile;
-        Instantiate(temp, transform.position, Quaternion.identity);
         temp.GetComponent<Projectile>().speed = projectileSpeed;
         temp.GetComponent<Projectile>().damage = damage;
         temp.GetComponent<Projectile>().source = gameObject;
         temp.GetComponent<Projectile>().dir = dir;
+        Instantiate(temp, transform.position, Quaternion.identity);
+        
 
         firing = true;
         yield return new WaitForSeconds(1 / firingRate);
