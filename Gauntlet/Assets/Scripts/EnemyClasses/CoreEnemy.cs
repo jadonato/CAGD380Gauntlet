@@ -3,21 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CoreEnemy : MonoBehaviour
+public class CoreEnemy : MonoBehaviour, IDamageable
 {
+    public float health;
     public float speed;
-    public float damage;
+    public float[] attackDamage;
     public int rank;
     public Material[] rankColor;
     public bool alerted;
+
 
     protected GameObject target;
     protected List<GameObject> playerList = new List<GameObject>();
     protected NavMeshAgent agent;
     protected bool zigLeft;
 
+    
     protected void moveToTarget()
     {
+        
         agent.destination = target.transform.position;
         if(Vector3.Distance(transform.position, target.transform.position) <= agent.stoppingDistance)
         {
@@ -54,10 +58,16 @@ public class CoreEnemy : MonoBehaviour
         {
             playerList.Add(player);
         }
-        print(playerList.Count);
     }
     protected void closestPlayer()
     {
+        for(int p = 0; p < playerList.Count; p++)
+        {
+            if(playerList[p] == null)
+            {
+                playerList.Remove(playerList[p]);
+            }
+        }
         target = playerList[0];
         for(int p = 0; p < playerList.Count; p++)
         {
@@ -76,5 +86,16 @@ public class CoreEnemy : MonoBehaviour
         yield return new WaitForSeconds(1);
         StartCoroutine(ZigZag());
     }
-    
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+    }
+    public void Heal(float heal)
+    {
+        heal = 0;
+    }
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
 }

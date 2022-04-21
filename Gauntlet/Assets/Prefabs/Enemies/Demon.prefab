@@ -148,8 +148,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e5e490e7cd5ea348b1c0e5e28d08d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 10
   speed: 3
-  damage: 5
+  attackDamage:
+  - 5
+  - 8
+  - 0
   rank: 1
   rankColor:
   - {fileID: 2100000, guid: f4822dac3d43448449c221259831a0aa, type: 2}

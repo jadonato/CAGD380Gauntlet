@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 3638899181781045476}
   - component: {fileID: 6481205284895593637}
   - component: {fileID: 8005171113436047937}
-  - component: {fileID: 5515574897248729286}
+  - component: {fileID: 3497151467674111181}
   m_Layer: 7
   m_Name: Fireball
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,10 +112,10 @@ MonoBehaviour:
   hurtPlayer: 1
   activatePotions: 0
   speed: 1
-  damage: 5
+  damage: 8
   source: {fileID: 0}
-  dir: {x: 0, y: -0.19466662, z: 0}
---- !u!54 &5515574897248729286
+  dir: {x: -8.855196, y: 0, z: -4.609597}
+--- !u!54 &3497151467674111181
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
