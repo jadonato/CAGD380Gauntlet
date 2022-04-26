@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23e378b69e6eee4dbb031d3943e0bde, type: 3}
   m_Name: Warrior
   m_EditorClassIdentifier: 
+  _sprite: {fileID: 0}
   _baseHealth: 500
   _meleeDamage: 5
   _magicDamage: 5
-  _defense: 10
-  _moveSpeed: 30
+  _armor: 0
+  _moveSpeed: 5

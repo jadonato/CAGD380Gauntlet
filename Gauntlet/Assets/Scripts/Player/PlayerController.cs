@@ -22,14 +22,30 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Functions
-    private void Update()
+    private void FixedUpdate()
     {
-        
+        FaceRotation();
+
+        Vector3 newPos = new Vector3(_moveVec.x, 0, _moveVec.y).normalized * _speed * Time.fixedDeltaTime;
+        transform.position += newPos;
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
         _moveVec = context.ReadValue<Vector2>();
+    }
+
+    private void FaceRotation()
+    {
+        if (_moveVec.x > _axisDeadSpace && !(_moveVec.y > _axisDeadSpace || _moveVec.y < -_axisDeadSpace))
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+        }
+        if (_moveVec.x < -_axisDeadSpace && !(_moveVec.y > _axisDeadSpace || _moveVec.y < -_axisDeadSpace))
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
+        }
+
     }
     #endregion
 }
