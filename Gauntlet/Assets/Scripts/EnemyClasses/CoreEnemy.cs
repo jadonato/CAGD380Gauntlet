@@ -21,7 +21,6 @@ public class CoreEnemy : MonoBehaviour, IDamageable
     
     protected void moveToTarget()
     {
-        
         agent.destination = target.transform.position;
         if(Vector3.Distance(transform.position, target.transform.position) <= agent.stoppingDistance)
         {
