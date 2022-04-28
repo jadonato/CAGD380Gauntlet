@@ -18,4 +18,9 @@ public class Projectile : MonoBehaviour
     {
         GetComponent<Rigidbody>().velocity = dir.normalized * speed;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+    }
 }

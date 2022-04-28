@@ -24,6 +24,10 @@ public class Generator : MonoBehaviour
         {
             temp.GetComponent<Demon>().rank = rank;
         }
+        if (temp.GetComponent<Sorcerer>())
+        {
+            temp.GetComponent<Sorcerer>().rank = rank;
+        }
         Instantiate(temp, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(spawnRate);
         StartCoroutine(SpawnEnemy());

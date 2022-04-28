@@ -23,10 +23,7 @@ public class Demon : CoreEnemy
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0)
-        {
-            Die();
-        }
+        
         if (alerted)
         {
             closestPlayer();
@@ -35,6 +32,10 @@ public class Demon : CoreEnemy
 
         }
         colorCheck();
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 
     private void RangedAttack()

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class FrameRateCounter : MonoBehaviour
 {
     public Text frameText;
+    private float time;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +15,15 @@ public class FrameRateCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        frameText.text = "FPS: " + (int)(1f / Time.unscaledDeltaTime);
+        if (time <= 0)
+        {
+            frameText.text = "FPS: " + (int)(1f / Time.unscaledDeltaTime);
+            time = 1;
+        }
+        else
+        {
+            time -= 1 * Time.deltaTime;
+        }
+        
     }
 }
