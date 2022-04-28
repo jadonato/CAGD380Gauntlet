@@ -141,6 +141,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1eb9302b-e26f-4ca3-8cc6-7033d57609c3
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1151373873990222494}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 90e36a80-0155-473b-875a-f753eca4ebdf
+    m_ActionName: Player/Attack[/Mouse/leftButton,/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -159,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0
-  _axisDeadSpace: 0
+  _axisDeadSpace: 0.3
   _moveVec: {x: 0, y: 0}
 --- !u!114 &1151373873990222492
 MonoBehaviour:
@@ -195,7 +211,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1 &1151373875253064996
 GameObject:
@@ -224,8 +240,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151373875253064996}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.73}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.38}
+  m_LocalPosition: {x: 0, y: 0, z: 1.065}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1.0500336}
   m_Children: []
   m_Father: {fileID: 1151373873990222493}
   m_RootOrder: 0
@@ -257,7 +273,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: d076e9a1d565a43409f084b975a73685, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
