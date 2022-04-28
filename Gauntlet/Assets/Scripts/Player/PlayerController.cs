@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] [Range(0f, 0.5f)] private float _axisDeadSpace = 0.3f;
 
     [SerializeField] private Vector2 _moveVec = Vector2.zero;
+
+    private Player _player;
     #endregion
 
     #region Properties
@@ -22,6 +24,11 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Functions
+    private void Awake()
+    {
+        _player = GetComponent<Player>();
+    }
+
     private void FixedUpdate()
     {
         FaceRotation();
@@ -32,20 +39,41 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!gameObject.activeInHierarchy)
+            return;
+
         _moveVec = context.ReadValue<Vector2>();
+    }
+
+    public void Attack(InputAction.CallbackContext context)
+    {
+        if(gameObject.activeInHierarchy)
+        {
+            if (context.performed)
+            {
+                Debug.Log("Attacking: " + gameObject + " " + transform.position, this);
+            }
+        }
     }
 
     private void FaceRotation()
     {
         if (_moveVec.x > _axisDeadSpace && !(_moveVec.y > _axisDeadSpace || _moveVec.y < -_axisDeadSpace))
-        {
             transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
-        }
-        if (_moveVec.x < -_axisDeadSpace && !(_moveVec.y > _axisDeadSpace || _moveVec.y < -_axisDeadSpace))
-        {
+        else if (_moveVec.x < -_axisDeadSpace && !(_moveVec.y > _axisDeadSpace || _moveVec.y < -_axisDeadSpace))
             transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
-        }
-
+        else if (_moveVec.x > _axisDeadSpace && _moveVec.y > _axisDeadSpace)
+            transform.rotation = Quaternion.Euler(new Vector3(0, 45, 0));
+        else if (_moveVec.x > _axisDeadSpace && _moveVec.y < -_axisDeadSpace)
+            transform.rotation = Quaternion.Euler(new Vector3(0, 135, 0));
+        else if (_moveVec.x < -_axisDeadSpace && _moveVec.y > _axisDeadSpace)
+            transform.rotation = Quaternion.Euler(new Vector3(0, -45, 0));
+        else if (_moveVec.x < -_axisDeadSpace && _moveVec.y < -_axisDeadSpace)
+            transform.rotation = Quaternion.Euler(new Vector3(0, -135, 0));
+        if (_moveVec.y > _axisDeadSpace && !(_moveVec.x > _axisDeadSpace || _moveVec.x < -_axisDeadSpace))
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        else if (_moveVec.y < -_axisDeadSpace && !(_moveVec.x > _axisDeadSpace || _moveVec.x < -_axisDeadSpace))
+            transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
     }
     #endregion
 }

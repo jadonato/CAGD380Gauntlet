@@ -33,11 +33,19 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    #region Functions
     private void Awake()
     {
         _controller = GetComponent<PlayerController>();
         UpdateStatValues();
     }
+
+    #region Public Functions
+    public void Attack()
+    {
+        Debug.Log("Attack");
+    }
+    #endregion
 
     private void UpdateStatValues()
     {
@@ -51,4 +59,5 @@ public class Player : MonoBehaviour
         //Updates other scripts that need this info
         _controller.Speed = _moveSpeed;
     }
+    #endregion
 }
