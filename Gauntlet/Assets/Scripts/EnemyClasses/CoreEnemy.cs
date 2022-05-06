@@ -10,6 +10,7 @@ public class CoreEnemy : MonoBehaviour, IDamageable
     public float[] attackDamage;
     public int rank;
     public Material[] rankColor;
+    public GameObject[] accessories;
     public bool alerted;
 
 
@@ -24,6 +25,9 @@ public class CoreEnemy : MonoBehaviour, IDamageable
         agent.destination = target.transform.position;
         if(Vector3.Distance(transform.position, target.transform.position) <= agent.stoppingDistance)
         {
+            Transform temp = target.transform;
+            temp.position = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+            transform.LookAt(target.transform);
             agent.speed = 0;
         }
         else
@@ -48,6 +52,10 @@ public class CoreEnemy : MonoBehaviour, IDamageable
         if (rank > 0)
         {
             GetComponent<MeshRenderer>().material = rankColor[rank - 1];
+            for(int a = 0; a < accessories.Length; a++)
+            {
+                accessories[a].GetComponent<MeshRenderer>().material = rankColor[rank - 1];
+            }
         }
     }
 

@@ -8,8 +8,8 @@ public class Sorcerer : CoreEnemy
     public float invisibilityDuration;
     public float invisibilityCooldown;
     public float meleeEngagementRange;
-    public GameObject[] accessories;
     public ParticleSystem[] lightning;
+    public GameObject hitCollider;
     private bool isAttacking;
     // Start is called before the first frame update
     void Start()
@@ -48,7 +48,9 @@ public class Sorcerer : CoreEnemy
         {
             lightning[i].Play();
         }
-        
+        hitCollider.SetActive(true);
+        yield return new WaitForSeconds(lightning[0].duration);
+        hitCollider.SetActive(false);
         yield return new WaitForSeconds(1);
         isAttacking = false;
     }

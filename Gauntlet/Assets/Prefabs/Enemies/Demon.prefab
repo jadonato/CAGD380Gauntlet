@@ -159,6 +159,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f4822dac3d43448449c221259831a0aa, type: 2}
   - {fileID: 2100000, guid: fd7c12ae041afaf4e8e4bfc735455f99, type: 2}
   - {fileID: 2100000, guid: 405c05551df05be478b2e6739df707ee, type: 2}
+  accessories: []
   alerted: 1
   Range: 10
   projectileSpeed: 1
