@@ -46,12 +46,13 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Attack(InputAction.CallbackContext context)
-    {
-        if(gameObject.activeInHierarchy)
+    {   
+        if (gameObject.activeInHierarchy)
         {
             if (context.performed)
             {
-                Debug.Log("Attacking: " + gameObject + " " + transform.position, this);
+                Debug.Log("Attacking!");
+                _player.playerAttackingScript.Attack();
             }
         }
     }
