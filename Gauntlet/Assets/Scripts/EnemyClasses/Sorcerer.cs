@@ -49,6 +49,7 @@ public class Sorcerer : CoreEnemy
             lightning[i].Play();
         }
         hitCollider.SetActive(true);
+        hitCollider.GetComponent<meleeDamage>().damage = attackDamage[rank];
         yield return new WaitForSeconds(lightning[0].duration);
         hitCollider.SetActive(false);
         yield return new WaitForSeconds(1);

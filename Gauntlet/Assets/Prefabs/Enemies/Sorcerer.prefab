@@ -4911,6 +4911,7 @@ GameObject:
   - component: {fileID: 4546124956420919697}
   - component: {fileID: 8839783878193541290}
   - component: {fileID: 8350623760012449275}
+  - component: {fileID: 8572367807066109223}
   m_Layer: 0
   m_Name: HitCollider
   m_TagString: enemyAttack
@@ -4994,6 +4995,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5724295618532777577}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &8572367807066109223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5724295618532777577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ba69b3d2b8fb3f46bbe0bed8e811f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
 --- !u!1 &6001014479170650412
 GameObject:
   m_ObjectHideFlags: 0
@@ -10044,7 +10058,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   speed: 3
-  attackDamage: []
+  attackDamage:
+  - 5
+  - 8
+  - 10
   rank: 3
   rankColor:
   - {fileID: 2100000, guid: f96c1b49b1abbee46a43123974ac58e9, type: 2}

@@ -5,7 +5,9 @@ using UnityEngine.AI;
 
 public class Grunt : CoreEnemy
 {
-    
+    public float meleeEngagementRange;
+    public GameObject hitCollider;
+    private bool isAttacking;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,7 @@ public class Grunt : CoreEnemy
         {
             closestPlayer();
             moveToTarget();
+            clubAttack();
         }
         colorCheck();
     }
@@ -30,6 +33,20 @@ public class Grunt : CoreEnemy
 
     private void clubAttack()
     {
-        print("Attack player");
+        if (Vector3.Distance(transform.position, target.transform.position) <= meleeEngagementRange && !isAttacking)
+        {
+            StartCoroutine(Attack());
+        }
+    }
+
+    private IEnumerator Attack()
+    {
+        isAttacking = true;
+        hitCollider.SetActive(true);
+        hitCollider.GetComponent<meleeDamage>().damage = attackDamage[rank];
+        yield return new WaitForSeconds(0.5f);
+        hitCollider.SetActive(false);
+        yield return new WaitForSeconds(1.5f);
+        isAttacking = false;
     }
 }
