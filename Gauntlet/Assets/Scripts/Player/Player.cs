@@ -18,7 +18,11 @@ public class Player : MonoBehaviour
     [SerializeField] private float _armor;
     [SerializeField] private float _moveSpeed;
 
+    [Header("Player Attacking Stats")]
+    [SerializeField] private float _attackCooldownSeconds;
+
     private PlayerController _controller;
+    [SerializeField] private PlayerAttacking _playerAttacking;
     #endregion
 
     #region Properties
@@ -31,13 +35,18 @@ public class Player : MonoBehaviour
             _score = value;
         }
     }
+    public PlayerAttacking playerAttackingScript { get { return _playerAttacking; } }
     #endregion
 
     #region Functions
     private void Awake()
     {
         _controller = GetComponent<PlayerController>();
+        //_playerAttacking = gameObject.GetComponent<PlayerAttacking>();
+
         UpdateStatValues();
+        SetAttackingInfo();
+        SetAttackingInfo();
     }
 
     #region Public Functions
@@ -59,5 +68,11 @@ public class Player : MonoBehaviour
         //Updates other scripts that need this info
         _controller.Speed = _moveSpeed;
     }
+
+    private void SetAttackingInfo()
+    {
+        _playerAttacking.AttackCooldown = _attackCooldownSeconds;
+        _playerAttacking.SetDamages(_meeleDamage, _magicDamage);
+    }    
     #endregion
 }
