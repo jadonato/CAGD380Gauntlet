@@ -96,6 +96,10 @@ public class CoreEnemy : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
     }
     public void Heal(float heal)
     {

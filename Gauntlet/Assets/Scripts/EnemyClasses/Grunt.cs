@@ -49,4 +49,14 @@ public class Grunt : CoreEnemy
         yield return new WaitForSeconds(1.5f);
         isAttacking = false;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Projectile")
+        {
+            TakeDamage(other.GetComponent<Projectile>().damage);
+            Destroy(other.gameObject);
+        }
+
+    }
 }

@@ -81,4 +81,14 @@ public class Sorcerer : CoreEnemy
         yield return new WaitForSeconds(invisibilityDuration);
         StartCoroutine(Cooldown());
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Projectile")
+        {
+            TakeDamage(other.GetComponent<Projectile>().damage);
+            Destroy(other.gameObject);
+        }
+
+    }
 }

@@ -32,10 +32,7 @@ public class Demon : CoreEnemy
 
         }
         colorCheck();
-        if (health <= 0)
-        {
-            Die();
-        }
+        
     }
 
     private void RangedAttack()
@@ -81,5 +78,6 @@ public class Demon : CoreEnemy
             TakeDamage(other.GetComponent<Projectile>().damage);
             Destroy(other.gameObject);
         }
+
     }
 }
