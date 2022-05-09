@@ -61,12 +61,21 @@ public class Door : MonoBehaviour
             
         }
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            players.Add(other.gameObject);
+            collision.gameObject.GetComponent<Player>().door = gameObject;
+
+        }
+    }
+
+    private void OnColliderEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            other.GetComponent<Player>().door = gameObject;
+
         }
     }
 
@@ -74,7 +83,7 @@ public class Door : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            players.Remove(other.gameObject);
+            other.GetComponent<Player>().door = null;
         }
     }
 }

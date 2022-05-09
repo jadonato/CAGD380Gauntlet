@@ -68,6 +68,7 @@ public class CoreEnemy : MonoBehaviour, IDamageable
     }
     protected void closestPlayer()
     {
+
         for(int p = 0; p < playerList.Count; p++)
         {
             if(playerList[p] == null)

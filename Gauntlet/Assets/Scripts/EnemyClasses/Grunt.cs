@@ -20,7 +20,7 @@ public class Grunt : CoreEnemy
     // Update is called once per frame
     void Update()
     {
-        if (alerted)
+        if (alerted && playerList.Count > 0)
         {
             closestPlayer();
             moveToTarget();

@@ -24,7 +24,7 @@ public class Demon : CoreEnemy
     void Update()
     {
         
-        if (alerted)
+        if (alerted && playerList.Count > 0)
         {
             closestPlayer();
             moveToTarget();

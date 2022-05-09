@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerController))]
 public class Player : MonoBehaviour
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _magicDamage;
     [SerializeField] private float _armor;
     [SerializeField] private float _moveSpeed;
+
+    public GameObject door;
 
     private PlayerController _controller;
     #endregion
@@ -36,6 +39,8 @@ public class Player : MonoBehaviour
     #region Functions
     private void Awake()
     {
+        //Spawn Player at spawnpoint
+        transform.position = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
         _controller = GetComponent<PlayerController>();
         UpdateStatValues();
     }
@@ -46,6 +51,21 @@ public class Player : MonoBehaviour
         Debug.Log("Attack");
     }
     #endregion
+
+    //Open Door function
+    public void openDoor()
+    {
+        if (door != null)
+        {
+            print("There is a door");
+            if (Keyboard.current.eKey.IsPressed())
+            {
+                print("E key has been pressed");
+                Destroy(door);
+                door = null;
+            }
+        }
+    }
 
     private void UpdateStatValues()
     {
