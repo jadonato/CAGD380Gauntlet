@@ -27,6 +27,7 @@ public class PlayerAttacking : MonoBehaviour
 
     //Other
     private IEnumerator _attackCoroutine;
+    private List<GameObject> _damageablesInRange;
     #endregion
 
     #region Properties
@@ -39,6 +40,18 @@ public class PlayerAttacking : MonoBehaviour
     {
         //_mRenderer = GetComponent<MeshRenderer>();
         _canAttack = true;
+        _damageablesInRange = new List<GameObject>();
+    }
+
+    private void Update()
+    {
+        //Debug.Log(_damageablesInRange.Count);
+        CleanDamageList();
+
+        if (_damageablesInRange.Count > 0)
+            _damageableInMeleeRange = true;
+        else
+            _damageableInMeleeRange = false;
     }
 
     public void Attack()
@@ -94,6 +107,23 @@ public class PlayerAttacking : MonoBehaviour
         _meleeHurtbox.damage = _meleeDamage;
     }
 
+    private void CleanDamageList()
+    {
+        List<GameObject> removeList = new List<GameObject>();
+        foreach(GameObject damageable in _damageablesInRange)
+        {
+            //Debug.Log(damageable);
+            if (damageable == null)
+                removeList.Add(damageable);
+        }
+
+        foreach(GameObject remove in removeList)
+        {
+            _damageablesInRange.Remove(remove);
+        }
+    }
+
+    /*
     private void OnTriggerStay(Collider other)
     {
         IDamageable damageable = other.GetComponent<IDamageable>();
@@ -103,14 +133,28 @@ public class PlayerAttacking : MonoBehaviour
             _damageableInMeleeRange = true;
         }
     }
+    */
+
+    private void OnTriggerEnter(Collider other)
+    {
+        GameObject damageable = other.gameObject;
+
+        if (other.GetComponent<CoreEnemy>())
+        {
+            Debug.Log(other.name + "is an enemy");
+            //_damageableInMeleeRange = true;
+            _damageablesInRange.Add(damageable);
+        }
+    }
 
     private void OnTriggerExit(Collider other)
     {
-        IDamageable damageable = other.GetComponent<IDamageable>();
+        GameObject damageable = other.gameObject;
 
-        if (damageable != null)
+        if (other.GetComponent<CoreEnemy>())
         {
-            _damageableInMeleeRange = false;
+            //_damageableInMeleeRange = false;
+            _damageablesInRange.Remove(damageable);
         }
     }
     #endregion
