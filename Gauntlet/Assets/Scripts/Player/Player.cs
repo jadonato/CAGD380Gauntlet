@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerController))]
 public class Player : MonoBehaviour
@@ -19,9 +18,11 @@ public class Player : MonoBehaviour
     [SerializeField] private float _armor;
     [SerializeField] private float _moveSpeed;
 
-    public GameObject door;
+    [Header("Player Attacking Stats")]
+    [SerializeField] private float _attackCooldownSeconds;
 
     private PlayerController _controller;
+    [SerializeField] private PlayerAttacking _playerAttacking;
     #endregion
 
     #region Properties
@@ -34,15 +35,18 @@ public class Player : MonoBehaviour
             _score = value;
         }
     }
+    public PlayerAttacking playerAttackingScript { get { return _playerAttacking; } }
     #endregion
 
     #region Functions
     private void Awake()
     {
-        //Spawn Player at spawnpoint
-        transform.position = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
         _controller = GetComponent<PlayerController>();
+        //_playerAttacking = gameObject.GetComponent<PlayerAttacking>();
+
         UpdateStatValues();
+        SetAttackingInfo();
+        SetAttackingInfo();
     }
 
     #region Public Functions
@@ -51,21 +55,6 @@ public class Player : MonoBehaviour
         Debug.Log("Attack");
     }
     #endregion
-
-    //Open Door function
-    public void openDoor()
-    {
-        if (door != null)
-        {
-            print("There is a door");
-            if (Keyboard.current.eKey.IsPressed())
-            {
-                print("E key has been pressed");
-                Destroy(door);
-                door = null;
-            }
-        }
-    }
 
     private void UpdateStatValues()
     {
@@ -79,5 +68,11 @@ public class Player : MonoBehaviour
         //Updates other scripts that need this info
         _controller.Speed = _moveSpeed;
     }
+
+    private void SetAttackingInfo()
+    {
+        _playerAttacking.AttackCooldown = _attackCooldownSeconds;
+        _playerAttacking.SetDamages(_meeleDamage, _magicDamage);
+    }    
     #endregion
 }
