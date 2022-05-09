@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1151373873990222492}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,6 +216,7 @@ MonoBehaviour:
   _moveSpeed: 0
   _attackCooldownSeconds: 0.25
   _playerAttacking: {fileID: 7244432162786673071}
+  door: {fileID: 0}
 --- !u!1 &1151373875253064996
 GameObject:
   m_ObjectHideFlags: 0

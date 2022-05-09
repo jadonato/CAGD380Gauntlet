@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerController))]
 public class Player : MonoBehaviour
@@ -23,6 +24,9 @@ public class Player : MonoBehaviour
 
     private PlayerController _controller;
     [SerializeField] private PlayerAttacking _playerAttacking;
+
+    [Header("Object References")]
+    public GameObject door;
     #endregion
 
     #region Properties
@@ -41,6 +45,7 @@ public class Player : MonoBehaviour
     #region Functions
     private void Awake()
     {
+        transform.position = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
         _controller = GetComponent<PlayerController>();
         //_playerAttacking = gameObject.GetComponent<PlayerAttacking>();
 
@@ -53,6 +58,17 @@ public class Player : MonoBehaviour
     public void Attack()
     {
         Debug.Log("Attack");
+    }
+
+    //Open Door function
+    public void openDoor()
+    {
+        if (door != null)
+        {
+            Destroy(door);
+            door = null;
+            
+        }
     }
     #endregion
 

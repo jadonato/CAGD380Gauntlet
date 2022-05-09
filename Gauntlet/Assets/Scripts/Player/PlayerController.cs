@@ -36,7 +36,11 @@ public class PlayerController : MonoBehaviour
         Vector3 newPos = new Vector3(_moveVec.x, 0, _moveVec.y).normalized * _speed * Time.fixedDeltaTime;
         transform.position += newPos;
 
-        _player.openDoor();
+        if (Keyboard.current.eKey.IsPressed())
+        {
+            _player.openDoor();
+        }
+        
     }
 
     public void OnMove(InputAction.CallbackContext context)
