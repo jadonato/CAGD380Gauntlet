@@ -159,13 +159,19 @@ public class Player : MonoBehaviour
                 _keys++;
                 break;
             case ItemType.ArmorPotion:
-                _armor += _armorIncrease;
+                if (!_hasArmorPot)
+                {
+                    _armor += _armorIncrease;
+                    _hasArmorPot = true;
+                }
+                else
+                    _bluePotions++;
                 break;
             case ItemType.PotionPowerPotion:
-                if(!_hasArmorPot)
+                if(!_hasPotionPot)
                 {
                     _potionDamage += _potionDamageIncrease;
-                    _hasArmorPot = true;
+                    _hasPotionPot = true;
                 }
                 else
                     _bluePotions++;
@@ -226,6 +232,7 @@ public class Player : MonoBehaviour
         }
 
         UpdateStatValues();
+        SetAttackingInfo();
         Destroy(item.gameObject);
     }
 
