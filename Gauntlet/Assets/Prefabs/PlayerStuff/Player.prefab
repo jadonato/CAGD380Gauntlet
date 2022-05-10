@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 1151373873990222493}
   - component: {fileID: 1151373873990222178}
   - component: {fileID: 1151373873990222179}
+  - component: {fileID: 1151373873990222492}
   - component: {fileID: 1151373873990222176}
   - component: {fileID: 1151373873990222489}
   - component: {fileID: 1151373873990222495}
   - component: {fileID: 1151373873990222494}
-  - component: {fileID: 1151373873990222492}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -88,6 +88,47 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1151373873990222492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151373873990222177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd2a11662e2efe4792a0e9dce6cc2ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _class: {fileID: 11400000, guid: 16adba6ae2b15b948bf5ccdf8c7f28fc, type: 2}
+  _score: 0
+  isEnabled: 1
+  _health: 0
+  _maxHealth: 0
+  _meleeDamage: 0
+  _magicDamage: 0
+  _magicProjectileSpeed: 0
+  _armor: 0
+  _moveSpeed: 0
+  _potionDamage: 0
+  _attackCooldownSeconds: 0.25
+  _bluePotions: 0
+  _orangePotions: 0
+  _keys: 0
+  _armorIncrease: 5
+  _potionDamageIncrease: 2
+  _magicDamageIncrease: 2
+  _magicSpeedIncrease: 5
+  _meleeDamageIncrease: 2
+  _moveSpeedIncrease: 3
+  _hasArmorPot: 0
+  _hasPotionPot: 0
+  _hasMagicDamagePot: 0
+  _hasMagicSpeedPot: 0
+  _hasMeleeDamagePot: 0
+  _hasMoveSpeedPot: 0
+  _playerAttacking: {fileID: 7244432162786673071}
+  door: {fileID: 0}
 --- !u!65 &1151373873990222176
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -115,7 +156,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1151373873990222495
 MonoBehaviour:
@@ -194,29 +235,6 @@ MonoBehaviour:
   _speed: 0
   _axisDeadSpace: 0.3
   _moveVec: {x: 0, y: 0}
---- !u!114 &1151373873990222492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151373873990222177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cd2a11662e2efe4792a0e9dce6cc2ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _class: {fileID: 11400000, guid: 16adba6ae2b15b948bf5ccdf8c7f28fc, type: 2}
-  _score: 0
-  _health: 0
-  _maxHealth: 0
-  _meeleDamage: 0
-  _magicDamage: 0
-  _armor: 0
-  _moveSpeed: 0
-  _attackCooldownSeconds: 0.25
-  _playerAttacking: {fileID: 7244432162786673071}
-  door: {fileID: 0}
 --- !u!1 &1151373875253064996
 GameObject:
   m_ObjectHideFlags: 0

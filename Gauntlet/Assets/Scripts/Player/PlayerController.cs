@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector2 _moveVec = Vector2.zero;
 
     private Player _player;
+    private Rigidbody _rb;
     #endregion
 
     #region Properties
@@ -27,10 +28,16 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _player = GetComponent<Player>();
+        _rb = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
     {
+        _rb.velocity = Vector3.zero;
+
+        if (!_player.isEnabled)
+            return;
+
         FaceRotation();
 
         Vector3 newPos = new Vector3(_moveVec.x, 0, _moveVec.y).normalized * _speed * Time.fixedDeltaTime;
@@ -45,6 +52,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (!_player.isEnabled)
+            return;
+
         if (!gameObject.activeInHierarchy)
             return;
 
@@ -52,7 +62,10 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Attack(InputAction.CallbackContext context)
-    {   
+    {
+        if (!_player.isEnabled)
+            return;
+
         if (gameObject.activeInHierarchy)
         {
             if (context.performed)

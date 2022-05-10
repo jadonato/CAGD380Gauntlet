@@ -21,6 +21,7 @@ public class PlayerAttacking : MonoBehaviour
     private float _meleeDamage;
     private float _magicDamage;
     private float _attackCooldown;
+    private float _magicProjectileSpeed;
 
     //References
     //private MeshRenderer _mRenderer;
@@ -97,14 +98,17 @@ public class PlayerAttacking : MonoBehaviour
     {
         PlayerMagicProjectile attack = Instantiate(_magicProjectilePrefab, _firingPoint.position, _firingPoint.rotation).GetComponent<PlayerMagicProjectile>();
         attack.Damage = _magicDamage;
+        attack.Speed = _magicProjectileSpeed;
     }
 
-    public void SetDamages(float meleeDamage, float magicDamage)
+    public void SetDamages(float meleeDamage, float magicDamage, float magicProjectileSpeed)
     {
         _meleeDamage = meleeDamage;
         _magicDamage = magicDamage;
 
         _meleeHurtbox.damage = _meleeDamage;
+
+        _magicProjectileSpeed = magicProjectileSpeed;
     }
 
     private void CleanDamageList()

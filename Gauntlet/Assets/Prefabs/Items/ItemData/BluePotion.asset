@@ -9,14 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e23e378b69e6eee4dbb031d3943e0bde, type: 3}
-  m_Name: Warrior
+  m_Script: {fileID: 11500000, guid: 9b687068053c9ed49836342c0ab4bc8f, type: 3}
+  m_Name: BluePotion
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 0}
-  _baseHealth: 700
-  _meleeDamage: 5
-  _magicDamage: 5
-  _magicProjectileSpeed: 15
-  _armor: 3
-  _moveSpeed: 5
-  _potionDamage: 3
+  _itemType: 0
+  _itemModel: {fileID: 6690268983535850802, guid: 9b3672af6c28a0949818b57143604586, type: 3}
+  _scoreReward: 0
+  _healAmount: 0
