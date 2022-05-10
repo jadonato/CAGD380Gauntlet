@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     [SerializeField] private int _bluePotions;
     [SerializeField] private int _orangePotions;
     [SerializeField] private int _keys;
+    [SerializeField] private int _itemsAmount;
+    [SerializeField] private int _maxItems;
 
     [Header("Stat Upgrade Stuff")]
     [SerializeField] private int _armorIncrease = 5;
@@ -77,6 +79,11 @@ public class Player : MonoBehaviour
 
         SetStatValues();
         SetAttackingInfo();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(HealthDecayCycle());
     }
 
     #region Public Functions
@@ -140,19 +147,37 @@ public class Player : MonoBehaviour
         _playerAttacking.SetDamages(_meleeDamage, _magicDamage, _magicProjectileSpeed);
     }
 
-
+    #region ItemPickupFunction
     private void PickupItem(Item item)
     {
         switch (item.ItemData.ItemType)
         {
             case ItemType.BluePotion:
-                _bluePotions++;
+                if (_itemsAmount < _maxItems)
+                {
+                    _bluePotions++;
+                    _itemsAmount++;
+                }
+                else
+                    return;
                 break;
             case ItemType.OrangePotion:
-                _orangePotions++;
+                if (_itemsAmount < _maxItems)
+                {
+                    _orangePotions++;
+                    _itemsAmount++;
+                }
+                else
+                    return;
                 break;
             case ItemType.Key:
-                _keys++;
+                if (_itemsAmount < _maxItems)
+                {
+                    _keys++;
+                    _itemsAmount++;
+                }
+                else
+                    return;
                 break;
             case ItemType.ArmorPotion:
                 if (!_hasArmorPot)
@@ -161,16 +186,32 @@ public class Player : MonoBehaviour
                     _hasArmorPot = true;
                 }
                 else
-                    _bluePotions++;
+                {
+                    if (_itemsAmount < _maxItems)
+                    {
+                        _bluePotions++;
+                        _itemsAmount++;
+                    }
+                    else
+                        return;
+                }
                 break;
             case ItemType.PotionPowerPotion:
-                if(!_hasPotionPot)
+                if (!_hasPotionPot)
                 {
                     _potionDamage += _potionDamageIncrease;
                     _hasPotionPot = true;
                 }
                 else
-                    _bluePotions++;
+                {
+                    if (_itemsAmount < _maxItems)
+                    {
+                        _bluePotions++;
+                        _itemsAmount++;
+                    }
+                    else
+                        return;
+                }
                 break;
             case ItemType.MagicDamagePotion:
                 if (!_hasMagicDamagePot)
@@ -179,7 +220,15 @@ public class Player : MonoBehaviour
                     _hasMagicDamagePot = true;
                 }
                 else
-                    _bluePotions++;
+                {
+                    if (_itemsAmount < _maxItems)
+                    {
+                        _bluePotions++;
+                        _itemsAmount++;
+                    }
+                    else
+                        return;
+                }
                 break;
             case ItemType.MagicSpeedPotion:
                 if (!_hasMagicSpeedPot)
@@ -188,7 +237,15 @@ public class Player : MonoBehaviour
                     _hasMagicSpeedPot = true;
                 }
                 else
-                    _bluePotions++;
+                {
+                    if (_itemsAmount < _maxItems)
+                    {
+                        _bluePotions++;
+                        _itemsAmount++;
+                    }
+                    else
+                        return;
+                }
                 break;
             case ItemType.MeleeDamagePotion:
                 if (!_hasMeleeDamagePot)
@@ -197,7 +254,15 @@ public class Player : MonoBehaviour
                     _hasMeleeDamagePot = true;
                 }
                 else
-                    _bluePotions++;
+                {
+                    if (_itemsAmount < _maxItems)
+                    {
+                        _bluePotions++;
+                        _itemsAmount++;
+                    }
+                    else
+                        return;
+                }
                 break;
             case ItemType.MoveSpeedPotion:
                 if (!_hasMoveSpeedPot)
@@ -206,7 +271,15 @@ public class Player : MonoBehaviour
                     _hasMoveSpeedPot = true;
                 }
                 else
-                    _bluePotions++;
+                {
+                    if (_itemsAmount < _maxItems)
+                    {
+                        _bluePotions++;
+                        _itemsAmount++;
+                    }
+                    else
+                        return;
+                }
                 break;
             case ItemType.Treasure:
                 _score += item.ItemData.ScoreReward;
@@ -230,6 +303,27 @@ public class Player : MonoBehaviour
         UpdateStatValues();
         SetAttackingInfo();
         Destroy(item.gameObject);
+    }
+    #endregion
+
+    private IEnumerator HealthDecayCycle()
+    {
+        float timer = 0f;
+        while(timer <= 1f)
+        {
+            if (!isEnabled)
+            {
+                yield return new WaitForEndOfFrame();
+                StartCoroutine(HealthDecayCycle());
+                yield break;
+            }
+
+            yield return new WaitForEndOfFrame();
+            timer += Time.deltaTime;
+        }
+
+        takeDamage(1f);
+        StartCoroutine(HealthDecayCycle());
     }
 
     private void OnTriggerEnter(Collider other)
