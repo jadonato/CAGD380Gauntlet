@@ -14,6 +14,7 @@ public class Sorcerer : CoreEnemy
     // Start is called before the first frame update
     void Start()
     {
+        rankCheck();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
         findTargets();
@@ -24,13 +25,13 @@ public class Sorcerer : CoreEnemy
     // Update is called once per frame
     void Update()
     {
+        findTargets();
         if (alerted && playerList.Count > 0)
         {
             closestPlayer();
             moveToTarget();
             meleeAttack();
         }
-        colorCheck();
     }
 
     private void meleeAttack()
@@ -89,6 +90,15 @@ public class Sorcerer : CoreEnemy
             TakeDamage(other.GetComponent<Projectile>().damage);
             Destroy(other.gameObject);
         }
-
+        checkForZig(other, true);
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Projectile")
+        {
+            TakeDamage(other.GetComponent<Projectile>().damage);
+            Destroy(other.gameObject);
+        }
+        checkForZig(other, false);
     }
 }

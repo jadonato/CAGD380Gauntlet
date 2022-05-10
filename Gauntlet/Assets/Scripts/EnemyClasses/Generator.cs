@@ -15,7 +15,11 @@ public class Generator : MonoBehaviour
     void Start()
     {
         health = healthBase + (healthMod * rank);
-        StartCoroutine(SpawnEnemy());
+        if (alerted)
+        {
+            StartCoroutine(SpawnEnemy());
+        }
+        
     }
 
     private IEnumerator SpawnEnemy()
@@ -41,6 +45,10 @@ public class Generator : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

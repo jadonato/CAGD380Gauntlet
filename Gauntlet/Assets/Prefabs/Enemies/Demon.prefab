@@ -149,11 +149,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  healthMod:
+  - 0
+  - 5
+  - 10
   speed: 3
   attackDamage:
   - 5
   - 8
-  - 0
+  - 10
   rank: 1
   rankColor:
   - {fileID: 2100000, guid: f4822dac3d43448449c221259831a0aa, type: 2}
@@ -161,6 +165,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 405c05551df05be478b2e6739df707ee, type: 2}
   accessories: []
   alerted: 1
+  playerList: []
   Range: 10
   projectileSpeed: 1
   firingRate: 1

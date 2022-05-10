@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class CoreEnemy : MonoBehaviour, IDamageable
 {
     public float health;
+    public float[] healthMod;
     public float speed;
     public float[] attackDamage;
     public int rank;
@@ -15,9 +16,10 @@ public class CoreEnemy : MonoBehaviour, IDamageable
 
 
     protected GameObject target;
-    protected List<GameObject> playerList = new List<GameObject>();
+    public List<GameObject> playerList = new List<GameObject>();
     protected NavMeshAgent agent;
     protected bool zigLeft;
+    protected bool zigZag = false;
 
     
     protected void moveToTarget()
@@ -34,7 +36,7 @@ public class CoreEnemy : MonoBehaviour, IDamageable
         {
             agent.speed = speed;
         }
-        if (Vector3.Distance(transform.position, target.transform.position) > 3)
+        if (Vector3.Distance(transform.position, target.transform.position) > 3 && zigZag)
         {
             if (zigLeft)
             {
@@ -47,7 +49,7 @@ public class CoreEnemy : MonoBehaviour, IDamageable
         }
         
     }
-    protected void colorCheck()
+    protected void rankCheck()
     {
         if (rank > 0)
         {
@@ -56,15 +58,23 @@ public class CoreEnemy : MonoBehaviour, IDamageable
             {
                 accessories[a].GetComponent<MeshRenderer>().material = rankColor[rank - 1];
             }
+            for(int h = 0; h < healthMod.Length; h++)
+            {
+                health += healthMod[h];
+            }
         }
     }
 
     protected void findTargets()
     {
-        foreach(GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+        if (playerList.Count <= 0)
         {
-            playerList.Add(player);
+            foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+            {
+                playerList.Add(player);
+            }
         }
+        
     }
     protected void closestPlayer()
     {
@@ -94,6 +104,23 @@ public class CoreEnemy : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(1);
         StartCoroutine(ZigZag());
     }
+
+    protected void checkForZig(Collider other, bool active)
+    {
+        if(other.tag == "BigRoom")
+        {
+            if (active)
+            {
+                zigZag = true;
+            }
+            else
+            {
+                zigZag = false;
+            }
+            
+        }
+    }
+
     public void TakeDamage(float damage)
     {
         health -= damage;
