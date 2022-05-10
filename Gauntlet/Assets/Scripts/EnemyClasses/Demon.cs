@@ -40,6 +40,7 @@ public class Demon : CoreEnemy
     {
         if(Vector3.Distance(transform.position, target.transform.position) <= Range)
         {
+            print("Can Fire");
             agent.speed = 0;
 
             Vector3 temp = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
