@@ -9,7 +9,19 @@ public enum ClassType
 public enum ItemType
 {
     BluePotion,
-    OrangePotion
+    OrangePotion,
+    Key,
+    ArmorPotion,
+    PotionPowerPotion,
+    MagicDamagePotion,
+    MagicSpeedPotion,
+    MeleeDamagePotion,
+    MoveSpeedPotion,
+    Treasure,
+    BagOfJewels,
+    FoodSmall,
+    FoodMedium,
+    FoodLarge
 }
 
 public enum Stats

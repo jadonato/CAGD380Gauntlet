@@ -7,16 +7,20 @@ using UnityEngine.UI;
 public class PlayerClassData : ScriptableObject
 {
     [SerializeField] private Sprite _sprite;
-    [SerializeField] private float _baseHealth;
-    [SerializeField] private float _meleeDamage;
-    [SerializeField] private float _magicDamage;
-    [SerializeField] private float _armor;
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] private int _baseHealth;
+    [SerializeField] private int _meleeDamage;
+    [SerializeField] private int _magicDamage;
+    [SerializeField] private int _magicProjectileSpeed;
+    [SerializeField] private int _armor;
+    [SerializeField] private int _moveSpeed;
+    [SerializeField] private int _potionDamage;
 
     public Sprite Sprite { get { return _sprite; } }
-    public float BaseHealth { get { return _baseHealth; } }
-    public float MeeleDamage { get { return _meleeDamage; } }
-    public float MagicDamage { get { return _magicDamage; } }
-    public float Armor { get { return _armor; } }
-    public float MoveSpeed { get { return _moveSpeed; } }
+    public int BaseHealth { get { return _baseHealth; } }
+    public int MeeleDamage { get { return _meleeDamage; } }
+    public int MagicDamage { get { return _magicDamage; } }
+    public int MagicProjectileSpeed { get { return _magicProjectileSpeed; } }
+    public int Armor { get { return _armor; } }
+    public int MoveSpeed { get { return _moveSpeed; } }
+    public int PotionDamage { get { return _potionDamage; } }
 }
