@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
     {
         if (door != null)
         {
-            Destroy(door);
+            door.GetComponent<Door>().openDoor();
             door = null;
             
         }

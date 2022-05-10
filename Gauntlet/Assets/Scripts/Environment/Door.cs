@@ -37,9 +37,9 @@ public class Door : MonoBehaviour
 
     private void alertEnemies()
     {
-        for(int e = 0; e < alertList.Length; e++)
+        for (int e = 0; e < alertList.Length; e++)
         {
-            if(alertList[e] != null)
+            if (alertList[e] != null)
             {
                 if (alertList[e].GetComponent<Grunt>())
                 {
@@ -65,8 +65,9 @@ public class Door : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            print("Give Player door");
             collision.gameObject.GetComponent<Player>().door = gameObject;
-
+            players.Add(collision.gameObject);
         }
     }
 
@@ -74,16 +75,19 @@ public class Door : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<Player>().door = gameObject;
+            //print("Give Player door");
+            //other.GetComponent<Player>().door = gameObject;
 
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision other)
     {
-        if (other.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            other.GetComponent<Player>().door = null;
+            print("Remove Player door");
+            other.gameObject.GetComponent<Player>().door = null;
+            players.Remove(other.gameObject);
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     public float cameraPosAdjustment;
-    private new List<GameObject> playerList = new List<GameObject>();
+    public new List<GameObject> playerList = new List<GameObject>();
     private Camera main;
 
     private void Awake()
@@ -26,7 +26,7 @@ public class CameraControl : MonoBehaviour
         foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
         {
             bool newPlayer = true;
-            for(int p = 1; p < playerList.Count; p++)
+            for(int p = 0; p < playerList.Count; p++)
             {
                 if(player == playerList[p])
                 {
@@ -48,15 +48,16 @@ public class CameraControl : MonoBehaviour
         Vector3 temp = playerList[0].transform.position;
         for (int p = 1; p < playerList.Count; p++)
         {
-            if (!playerList[p].GetComponent<Player>().enabled)
+            if (playerList[p].GetComponent<Player>().isEnabled)
             {
+
                 temp += playerList[p].transform.position;
             }
 
         }
         if (playerList.Count > 1)
         {
-            print("P1(" + playerList[0].transform.position + "), P2(" + playerList[1].transform.position + "), average(" + (playerList[0].transform.position + playerList[1].transform.position) / 2 + ")");
+            print("P1(" + playerList[0].transform.position + "), P2(" + playerList[1].transform.position + "), average(" + (playerList[0].transform.position + playerList[1].transform.position) / 2 + "), temp(" + temp / 2 + ")");
 
         }
         temp = temp / playerList.Count;

@@ -8366,6 +8366,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1578989315}
     m_Modifications:
+    - target: {fileID: 3542627997343249779, guid: 8b89c4d4429e6f747a31d521b07c5550, type: 3}
+      propertyPath: m_Size.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542627997343249779, guid: 8b89c4d4429e6f747a31d521b07c5550, type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3542627997343249779, guid: 8b89c4d4429e6f747a31d521b07c5550, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3542627997343249780, guid: 8b89c4d4429e6f747a31d521b07c5550, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -8413,6 +8425,18 @@ PrefabInstance:
     - target: {fileID: 3542627997343249781, guid: 8b89c4d4429e6f747a31d521b07c5550, type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150788775367589111, guid: 8b89c4d4429e6f747a31d521b07c5550, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692525311781943625, guid: 8b89c4d4429e6f747a31d521b07c5550, type: 3}
+      propertyPath: isLocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4692525311781943625, guid: 8b89c4d4429e6f747a31d521b07c5550, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7978948097175544520, guid: 8b89c4d4429e6f747a31d521b07c5550, type: 3}
       propertyPath: m_LocalRotation.w

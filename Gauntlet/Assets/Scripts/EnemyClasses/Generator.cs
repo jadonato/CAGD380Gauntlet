@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Generator : MonoBehaviour
+public class Generator : MonoBehaviour, IDamageable
 {
     public float healthBase;
     public float healthMod;
@@ -45,10 +45,18 @@ public class Generator : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        if(health <= 0)
+        if (health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+    public void Heal(float heal)
+    {
+        heal = 0;
+    }
+    public void Die()
+    {
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
