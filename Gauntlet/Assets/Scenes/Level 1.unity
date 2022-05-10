@@ -1523,6 +1523,7 @@ GameObject:
   - component: {fileID: 394674228}
   - component: {fileID: 394674227}
   - component: {fileID: 394674226}
+  - component: {fileID: 394674230}
   m_Layer: 0
   m_Name: Exit
   m_TagString: Untagged
@@ -1567,8 +1568,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 3, z: 1}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!23 &394674228
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1618,6 +1619,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394674224}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &394674230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394674224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93a2e4ccff18be14b9863b936f67512e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelName: Level 2
 --- !u!1 &404456616
 GameObject:
   m_ObjectHideFlags: 0

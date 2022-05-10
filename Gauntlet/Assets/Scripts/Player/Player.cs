@@ -70,11 +70,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         //Check for spawnpoint and move player to spawn
-        if(GameObject.FindGameObjectWithTag("SpawnPoint") != null)
-        {
-            _spawnpoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
-            transform.position = _spawnpoint;
-        }
+        goToSpawnPoint();
 
         _controller = GetComponent<PlayerController>();
         //_playerAttacking = gameObject.GetComponent<PlayerAttacking>();
@@ -242,6 +238,15 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Collided with item!");
             PickupItem(other.GetComponent<Item>());
+        }
+    }
+
+    public void goToSpawnPoint()
+    {
+        if (GameObject.FindGameObjectWithTag("SpawnPoint") != null)
+        {
+            _spawnpoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
+            transform.position = _spawnpoint;
         }
     }
     #endregion
