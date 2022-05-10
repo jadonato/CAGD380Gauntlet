@@ -30,7 +30,6 @@ public class Grunt : CoreEnemy
             moveToTarget();
             clubAttack();
         }
-        rankCheck();
     }
 
     

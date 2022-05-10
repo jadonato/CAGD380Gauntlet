@@ -33,7 +33,6 @@ public class Demon : CoreEnemy
             RangedAttack();
 
         }
-        rankCheck();
         
     }
 

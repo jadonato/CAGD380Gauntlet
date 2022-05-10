@@ -61,7 +61,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 210538292618886205}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.6
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  healthMod: []
   speed: 3
   attackDamage:
   - 5
@@ -99,6 +100,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 8269682a895dfd345801eead5b5d69f6, type: 2}
   accessories: []
   alerted: 1
+  playerList: []
   meleeEngagementRange: 5
   hitCollider: {fileID: 6837564445300522257}
 --- !u!54 &210538292618886212
