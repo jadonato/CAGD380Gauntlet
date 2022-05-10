@@ -109,6 +109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5564cdd2ccf4f224aa4a3b0c2ebde157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBase: 10
+  healthMod: 5
   enemyType: {fileID: 0}
   rank: 1
   spawnRate: 3
+  alerted: 0

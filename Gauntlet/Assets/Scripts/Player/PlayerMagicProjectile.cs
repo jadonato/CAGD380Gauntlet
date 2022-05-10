@@ -26,7 +26,7 @@ public class PlayerMagicProjectile : MonoBehaviour
 
         if (damageable != null)
         {
-            Debug.Log("Damaged an enemy!");
+            Debug.Log("Damaged enemy " + other.gameObject);
             damageable.TakeDamage(_damage);
             Destroy(gameObject);
         }

@@ -29,7 +29,7 @@ public class AttackHurtbox : MonoBehaviour
 
         if (damageable != null)
         {
-            Debug.Log("Damaged an enemy!");
+            Debug.Log("Damaged enemy " + other.gameObject);
             damageable.TakeDamage(damage);
         }
     }

@@ -111,10 +111,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hurtPlayer: 1
   activatePotions: 0
-  speed: 1
+  speed: 0.5
   damage: 8
-  source: {fileID: 0}
-  dir: {x: -8.855196, y: 0, z: -4.609597}
+  source: {fileID: 284321869492215870, guid: 3f1b29f78d7aa324d868d713fb5a5105, type: 3}
+  dir: {x: 6.8609123, y: 0, z: -0.94225883}
 --- !u!54 &3497151467674111181
 Rigidbody:
   m_ObjectHideFlags: 0

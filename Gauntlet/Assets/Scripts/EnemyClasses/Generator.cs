@@ -22,6 +22,11 @@ public class Generator : MonoBehaviour, IDamageable
         
     }
 
+    public void startSpawning()
+    {
+        StartCoroutine(SpawnEnemy());
+    }
+
     private IEnumerator SpawnEnemy()
     {
         GameObject temp = enemyType;
@@ -45,6 +50,7 @@ public class Generator : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         health -= damage;
+        print(gameObject + " health is at " + health);
         if (health <= 0)
         {
             Die();

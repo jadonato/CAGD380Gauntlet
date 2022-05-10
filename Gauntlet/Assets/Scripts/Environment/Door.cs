@@ -41,21 +41,13 @@ public class Door : MonoBehaviour
         {
             if (alertList[e] != null)
             {
-                if (alertList[e].GetComponent<Grunt>())
+                if (alertList[e].GetComponent<CoreEnemy>())
                 {
-                    alertList[e].GetComponent<Grunt>().alerted = true;
-                }
-                if (alertList[e].GetComponent<Demon>())
-                {
-                    alertList[e].GetComponent<Demon>().alerted = true;
-                }
-                if (alertList[e].GetComponent<Sorcerer>())
-                {
-                    alertList[e].GetComponent<Sorcerer>().alerted = true;
+                    alertList[e].GetComponent<CoreEnemy>().alerted = true;
                 }
                 if (alertList[e].GetComponent<Generator>())
                 {
-                    alertList[e].GetComponent<Generator>().alerted = true;
+                    alertList[e].GetComponent<Generator>().startSpawning();
                 }
             }
             
