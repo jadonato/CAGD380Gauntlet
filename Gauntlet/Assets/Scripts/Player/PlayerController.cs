@@ -52,26 +52,32 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (!_player.isEnabled)
-            return;
+        if(context.performed)
+        {
+            if (!_player.isEnabled)
+                return;
 
-        if (!gameObject.activeInHierarchy)
-            return;
+            if (!gameObject.activeInHierarchy)
+                return;
 
-        _moveVec = context.ReadValue<Vector2>();
+            _moveVec = context.ReadValue<Vector2>();
+        }
     }
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if (!_player.isEnabled)
-            return;
-
-        if (gameObject.activeInHierarchy)
+        if(context.performed)
         {
-            if (context.performed)
+            if (!_player.isEnabled)
+                return;
+
+            if (gameObject.activeInHierarchy)
             {
-                Debug.Log("Attacking!");
-                _player.playerAttackingScript.Attack();
+                if (context.performed)
+                {
+                    Debug.Log("Attacking!");
+                    _player.playerAttackingScript.Attack();
+                }
             }
         }
     }

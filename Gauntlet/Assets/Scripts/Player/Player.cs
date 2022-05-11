@@ -100,7 +100,11 @@ public class Player : MonoBehaviour
 
     public void takeDamage(float damage)
     {
-        _health -= (int)damage;
+        int finalDamage = (int)damage - _armor;
+        if (finalDamage <= 0)
+            finalDamage = 1;
+
+        _health -= finalDamage;
         if(_health <= 0)
         {
             //Destroy(gameObject);
