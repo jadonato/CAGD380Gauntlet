@@ -30,17 +30,9 @@ public class Generator : MonoBehaviour, IDamageable
     private IEnumerator SpawnEnemy()
     {
         GameObject temp = enemyType;
-        if (temp.GetComponent<Grunt>())
+        if (temp.GetComponent<CoreEnemy>())
         {
-            temp.GetComponent<Grunt>().rank = rank;
-        }
-        if (temp.GetComponent<Demon>())
-        {
-            temp.GetComponent<Demon>().rank = rank;
-        }
-        if (temp.GetComponent<Sorcerer>())
-        {
-            temp.GetComponent<Sorcerer>().rank = rank;
+            temp.GetComponent<CoreEnemy>().rank = rank;
         }
         Instantiate(temp, transform.position, Quaternion.identity);
         yield return new WaitForSeconds(spawnRate);

@@ -8,13 +8,13 @@ public class CameraControl : MonoBehaviour
     public new List<GameObject> playerList = new List<GameObject>();
     private Camera main;
 
-    private void Awake()
-    {
-        main = FindObjectOfType<Camera>();
-    }
-
+   
     private void Update()
     {
+        if(main == null)
+        {
+            main = FindObjectOfType<Camera>();
+        }
         if (playerList.Count > 0)
         {
             adjustCameraPos();

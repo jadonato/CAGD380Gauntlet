@@ -33,7 +33,7 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadScene(levelName);
             foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
             {
-                
+                player.GetComponent<Player>().goToSpawnPoint();
             }
             
         }
