@@ -30,7 +30,6 @@ public class CameraControl : MonoBehaviour
             {
                 if(player == playerList[p])
                 {
-                    print("New player");
                     newPlayer = false;
                 }
             }
@@ -53,11 +52,6 @@ public class CameraControl : MonoBehaviour
 
                 temp += playerList[p].transform.position;
             }
-
-        }
-        if (playerList.Count > 1)
-        {
-            print("P1(" + playerList[0].transform.position + "), P2(" + playerList[1].transform.position + "), average(" + (playerList[0].transform.position + playerList[1].transform.position) / 2 + "), temp(" + temp / 2 + ")");
 
         }
         temp = temp / playerList.Count;

@@ -57,27 +57,16 @@ public class Door : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            print("Give Player door");
             collision.gameObject.GetComponent<Player>().door = gameObject;
             players.Add(collision.gameObject);
         }
     }
-
-    private void OnColliderEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            //print("Give Player door");
-            //other.GetComponent<Player>().door = gameObject;
-
-        }
-    }
+    
 
     private void OnCollisionExit(Collision other)
     {
         if (other.gameObject.tag == "Player")
         {
-            print("Remove Player door");
             other.gameObject.GetComponent<Player>().door = null;
             players.Remove(other.gameObject);
         }

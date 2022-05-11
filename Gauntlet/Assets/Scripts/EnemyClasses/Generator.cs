@@ -42,7 +42,6 @@ public class Generator : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         health -= damage;
-        print(gameObject + " health is at " + health);
         if (health <= 0)
         {
             Die();
