@@ -61,8 +61,8 @@ public class CameraControl : MonoBehaviour
 
         }
         temp = temp / playerList.Count;
-        print("temp pos is " + temp);
+        //print("temp pos is " + temp);
         main.transform.position = new Vector3(temp.x, main.transform.position.y, temp.z - cameraPosAdjustment);
-        print(main + " pos is " + main.transform.position);
+        //print(main + " pos is " + main.transform.position);
     }
 }

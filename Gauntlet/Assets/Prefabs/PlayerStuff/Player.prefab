@@ -115,6 +115,8 @@ MonoBehaviour:
   _bluePotions: 0
   _orangePotions: 0
   _keys: 0
+  _itemsAmount: 0
+  _maxItems: 12
   _armorIncrease: 5
   _potionDamageIncrease: 2
   _magicDamageIncrease: 2
