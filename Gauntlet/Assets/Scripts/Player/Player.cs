@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _hasMoveSpeedPot;
 
     private PlayerController _controller;
+    [SerializeField] private PlayerUI _playerUI;
     [SerializeField] private PlayerAttacking _playerAttacking;
     private Vector3 _spawnpoint;
 
@@ -65,6 +66,7 @@ public class Player : MonoBehaviour
         }
     }
     public PlayerAttacking playerAttackingScript { get { return _playerAttacking; } }
+    public PlayerUI PlayerUI { get { return _playerUI; } }
     //public float MagicProjectileSpeed { get { return _magicProjectileSpeed; } }
     #endregion
 
@@ -75,14 +77,18 @@ public class Player : MonoBehaviour
         goToSpawnPoint();
 
         _controller = GetComponent<PlayerController>();
+        //_playerUI = GetComponent<PlayerUI>();
         //_playerAttacking = gameObject.GetComponent<PlayerAttacking>();
 
-        SetStatValues();
-        SetAttackingInfo();
+        //SetStatValues();
+        //SetAttackingInfo();
+
+        
     }
 
     private void Start()
     {
+        _playerUI.OpenClassSelectMenu();
         StartCoroutine(HealthDecayCycle());
     }
 
@@ -122,6 +128,14 @@ public class Player : MonoBehaviour
     public void DisablePlayer()
     {
         isEnabled = false;
+    }
+
+    public void SetClass(PlayerClassData input)
+    {
+        _class = input;
+
+        SetStatValues();
+        SetAttackingInfo();
     }
     #endregion
 
