@@ -21,8 +21,14 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag != "BigRoom" && !other.GetComponent<PlayerAttacking>())
+        if (other.tag == "Player")
         {
+            print("Projectile deals damage");
+            other.GetComponent<Player>().takeDamage(damage);
+        }
+        if (other.tag != "BigRoom" && !other.GetComponent<PlayerAttacking>())
+        {
+            
             Destroy(gameObject);
         }
         
