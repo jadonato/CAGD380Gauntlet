@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerUI _playerUI;
     [SerializeField] private PlayerAttacking _playerAttacking;
     private Vector3 _spawnpoint;
+    private Material _mainMat;
 
     [Header("Object References")]
     public GameObject door;
@@ -82,8 +83,7 @@ public class Player : MonoBehaviour
 
         //SetStatValues();
         //SetAttackingInfo();
-
-        
+        _mainMat = GetComponent<MeshRenderer>().material;       
     }
 
     private void Start()
@@ -137,6 +137,21 @@ public class Player : MonoBehaviour
         SetStatValues();
         SetAttackingInfo();
     }
+
+    public void UsePotion()
+    {
+        if(_bluePotions > 0)
+        {
+            foreach(CoreEnemy enemy in FindObjectsOfType<CoreEnemy>())
+            {
+                enemy.TakeDamage(_potionDamage);
+            }
+            foreach(Generator generator in FindObjectsOfType<Generator>())
+            {
+                generator.TakeDamage(_potionDamage);
+            }
+        }
+    }
     #endregion
 
     private void SetStatValues()
@@ -149,6 +164,7 @@ public class Player : MonoBehaviour
         _armor = _class.Armor;
         _moveSpeed = _class.MoveSpeed;
         _potionDamage = _class.PotionDamage;
+        _mainMat.color = _class.ClassColor;
 
         //Updates other scripts that need this info
         _controller.Speed = _moveSpeed;
@@ -182,7 +198,7 @@ public class Player : MonoBehaviour
             case ItemType.OrangePotion:
                 if (_itemsAmount < _maxItems)
                 {
-                    _orangePotions++;
+                    _bluePotions++;
                     _itemsAmount++;
                 }
                 else

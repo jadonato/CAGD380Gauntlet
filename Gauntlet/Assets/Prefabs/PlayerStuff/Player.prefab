@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _class: {fileID: 11400000, guid: 16adba6ae2b15b948bf5ccdf8c7f28fc, type: 2}
   _score: 0
-  isEnabled: 1
+  isEnabled: 0
   _health: 700
   _maxHealth: 700
   _meleeDamage: 0

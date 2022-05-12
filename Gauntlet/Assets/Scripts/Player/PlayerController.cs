@@ -97,6 +97,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Potion(InputAction.CallbackContext context)
+    {
+        if (context.performed && _player.isEnabled)
+        {
+            if (gameObject.activeInHierarchy)
+            {
+                if (context.performed)
+                {
+                    _player.UsePotion();
+                }
+            }
+        }
+    }
+
     private void FaceRotation()
     {
         if (_moveVec.x > _axisDeadSpace && !(_moveVec.y > _axisDeadSpace || _moveVec.y < -_axisDeadSpace))
