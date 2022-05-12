@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Archer
   m_EditorClassIdentifier: 
   _sprite: {fileID: 0}
+  _classColor: {r: 0, g: 1, b: 0, a: 0}
   _baseHealth: 700
   _meleeDamage: 5
   _magicDamage: 6

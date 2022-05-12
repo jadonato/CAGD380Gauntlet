@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PlayerClassData : ScriptableObject
 {
     [SerializeField] private Sprite _sprite;
+    [SerializeField] private Color _classColor;
     [SerializeField] private int _baseHealth;
     [SerializeField] private int _meleeDamage;
     [SerializeField] private int _magicDamage;
@@ -16,6 +17,7 @@ public class PlayerClassData : ScriptableObject
     [SerializeField] private int _potionDamage;
 
     public Sprite Sprite { get { return _sprite; } }
+    public Color ClassColor { get { return _classColor; } }
     public int BaseHealth { get { return _baseHealth; } }
     public int MeeleDamage { get { return _meleeDamage; } }
     public int MagicDamage { get { return _magicDamage; } }

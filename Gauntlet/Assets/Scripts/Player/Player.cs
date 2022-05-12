@@ -47,8 +47,10 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _hasMoveSpeedPot;
 
     private PlayerController _controller;
+    [SerializeField] private PlayerUI _playerUI;
     [SerializeField] private PlayerAttacking _playerAttacking;
     private Vector3 _spawnpoint;
+    private Material _mainMat;
 
     [Header("Object References")]
     public GameObject door;
@@ -65,6 +67,7 @@ public class Player : MonoBehaviour
         }
     }
     public PlayerAttacking playerAttackingScript { get { return _playerAttacking; } }
+    public PlayerUI PlayerUI { get { return _playerUI; } }
     //public float MagicProjectileSpeed { get { return _magicProjectileSpeed; } }
     #endregion
 
@@ -75,14 +78,17 @@ public class Player : MonoBehaviour
         goToSpawnPoint();
 
         _controller = GetComponent<PlayerController>();
+        //_playerUI = GetComponent<PlayerUI>();
         //_playerAttacking = gameObject.GetComponent<PlayerAttacking>();
 
-        SetStatValues();
-        SetAttackingInfo();
+        //SetStatValues();
+        //SetAttackingInfo();
+        _mainMat = GetComponent<MeshRenderer>().material;       
     }
 
     private void Start()
     {
+        _playerUI.OpenClassSelectMenu();
         StartCoroutine(HealthDecayCycle());
     }
 
@@ -123,6 +129,29 @@ public class Player : MonoBehaviour
     {
         isEnabled = false;
     }
+
+    public void SetClass(PlayerClassData input)
+    {
+        _class = input;
+
+        SetStatValues();
+        SetAttackingInfo();
+    }
+
+    public void UsePotion()
+    {
+        if(_bluePotions > 0)
+        {
+            foreach(CoreEnemy enemy in FindObjectsOfType<CoreEnemy>())
+            {
+                enemy.TakeDamage(_potionDamage);
+            }
+            foreach(Generator generator in FindObjectsOfType<Generator>())
+            {
+                generator.TakeDamage(_potionDamage);
+            }
+        }
+    }
     #endregion
 
     private void SetStatValues()
@@ -135,6 +164,7 @@ public class Player : MonoBehaviour
         _armor = _class.Armor;
         _moveSpeed = _class.MoveSpeed;
         _potionDamage = _class.PotionDamage;
+        _mainMat.color = _class.ClassColor;
 
         //Updates other scripts that need this info
         _controller.Speed = _moveSpeed;
@@ -168,7 +198,7 @@ public class Player : MonoBehaviour
             case ItemType.OrangePotion:
                 if (_itemsAmount < _maxItems)
                 {
-                    _orangePotions++;
+                    _bluePotions++;
                     _itemsAmount++;
                 }
                 else

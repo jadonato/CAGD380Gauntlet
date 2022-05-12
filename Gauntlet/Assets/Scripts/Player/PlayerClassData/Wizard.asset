@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wizard
   m_EditorClassIdentifier: 
   _sprite: {fileID: 0}
+  _classColor: {r: 0, g: 0, b: 1, a: 0}
   _baseHealth: 700
   _meleeDamage: 3
   _magicDamage: 6

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Valkyrie
   m_EditorClassIdentifier: 
   _sprite: {fileID: 0}
+  _classColor: {r: 1, g: 1, b: 0, a: 0}
   _baseHealth: 700
   _meleeDamage: 4
   _magicDamage: 4

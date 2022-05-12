@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Vector2 _moveVec = Vector2.zero;
 
-    private Player _player;
+    [SerializeField] private Player _player;
     private Rigidbody _rb;
     #endregion
 
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     #region Functions
     private void Awake()
     {
-        _player = GetComponent<Player>();
+        //_player = GetComponent<Player>();
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -77,6 +77,35 @@ public class PlayerController : MonoBehaviour
                 {
                     Debug.Log("Attacking!");
                     _player.playerAttackingScript.Attack();
+                }
+            }
+        }
+    }
+
+    public void Pause(InputAction.CallbackContext context)
+    {
+        if(context.performed && _player.isEnabled)
+        {
+            if (gameObject.activeInHierarchy)
+            {
+                if (context.performed)
+                {
+                    //Debug.Log("Pausing");
+                    _player.PlayerUI.PauseGame();
+                }
+            }
+        }
+    }
+
+    public void Potion(InputAction.CallbackContext context)
+    {
+        if (context.performed && _player.isEnabled)
+        {
+            if (gameObject.activeInHierarchy)
+            {
+                if (context.performed)
+                {
+                    _player.UsePotion();
                 }
             }
         }
