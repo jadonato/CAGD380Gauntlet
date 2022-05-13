@@ -14,7 +14,11 @@ public class Teleporter : MonoBehaviour
             if (active)
             {
                 StartCoroutine(cooldown());
-                other.transform.position = new Vector3(connectedPort.transform.position.x, other.transform.position.y, connectedPort.transform.position.z);
+                foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+                {
+                    player.transform.position = new Vector3(connectedPort.transform.position.x, player.transform.position.y, connectedPort.transform.position.z);
+                }
+                
             }
             
         }

@@ -26,6 +26,11 @@ public class LevelManager : MonoBehaviour
         {
             if (finalLevel)
             {
+
+                foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+                {
+                    player.SetActive(false);
+                }
                 GameManager.Instance.YouWin();
             }
             else
@@ -34,7 +39,7 @@ public class LevelManager : MonoBehaviour
                 {
                     DontDestroyOnLoad(player);
                 }
-                DontDestroyOnLoad(FindObjectOfType<CameraControl>());
+               // DontDestroyOnLoad(FindObjectOfType<CameraControl>());
                 SceneManager.LoadScene(levelName);
                 foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
                 {
