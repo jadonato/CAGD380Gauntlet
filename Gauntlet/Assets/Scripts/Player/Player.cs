@@ -103,15 +103,19 @@ public class Player : MonoBehaviour
     {
         if (door != null)
         {
-            if(door.GetComponent<Door>().isLocked && _keys > 0)
+            if (door.GetComponent<Door>().isLocked)
             {
-                door.GetComponent<Door>().openDoor();
-                door = null;
-                _keys--;
+                if(_keys > 0)
+                {
+                    door.GetComponent<Door>().openDoor();
+                    door = null;
+                    _keys--;
+                }
                 return;
             }
             door.GetComponent<Door>().openDoor();
-            door = null;           
+            door = null;
+
         }
     }
 
