@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 
     [Header("Items")]
     [SerializeField] private int _bluePotions;
-    [SerializeField] private int _orangePotions;
+    //[SerializeField] private int _orangePotions;
     [SerializeField] private int _keys;
     [SerializeField] private int _itemsAmount;
     [SerializeField] private int _maxItems;
@@ -98,9 +98,15 @@ public class Player : MonoBehaviour
     {
         if (door != null)
         {
+            if(door.GetComponent<Door>().isLocked && _keys > 0)
+            {
+                door.GetComponent<Door>().openDoor();
+                door = null;
+                _keys--;
+                return;
+            }
             door.GetComponent<Door>().openDoor();
-            door = null;
-            
+            door = null;           
         }
     }
 
