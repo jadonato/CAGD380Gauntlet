@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public string levelName;
-
+    public bool finalLevel;
     private List<GameObject> players = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
@@ -24,17 +24,24 @@ public class LevelManager : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            print("Touched Player");
-            foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+            if (finalLevel)
             {
-                DontDestroyOnLoad(player);
+                GameManager.Instance.YouWin();
             }
-            DontDestroyOnLoad(FindObjectOfType<CameraControl>());
-            SceneManager.LoadScene(levelName);
-            foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+            else
             {
-                player.GetComponent<Player>().goToSpawnPoint();
+                foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+                {
+                    DontDestroyOnLoad(player);
+                }
+                DontDestroyOnLoad(FindObjectOfType<CameraControl>());
+                SceneManager.LoadScene(levelName);
+                foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
+                {
+                    player.GetComponent<Player>().goToSpawnPoint();
+                }
             }
+            
             
         }
         
