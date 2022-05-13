@@ -6,6 +6,7 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "NewPlayerClassData", menuName = "PlayerClassData", order = 51)]
 public class PlayerClassData : ScriptableObject
 {
+    [SerializeField] private string _name;
     [SerializeField] private Sprite _sprite;
     [SerializeField] private Color _classColor;
     [SerializeField] private int _baseHealth;
@@ -16,6 +17,7 @@ public class PlayerClassData : ScriptableObject
     [SerializeField] private int _moveSpeed;
     [SerializeField] private int _potionDamage;
 
+    public string ClassName { get { return _name; } }
     public Sprite Sprite { get { return _sprite; } }
     public Color ClassColor { get { return _classColor; } }
     public int BaseHealth { get { return _baseHealth; } }

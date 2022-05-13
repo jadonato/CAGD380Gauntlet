@@ -6,6 +6,7 @@ public class Item : MonoBehaviour
 {
     #region Variables
     [SerializeField] private ItemData _itemData;
+    public bool isDestructable;
 
     private GameObject _model;
     #endregion

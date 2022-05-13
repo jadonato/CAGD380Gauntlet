@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     [Header("Player Stats")]
     [SerializeField] private int _health;
+    [SerializeField] private int _lives;
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _meleeDamage;
     [SerializeField] private int _magicDamage;
@@ -68,6 +69,10 @@ public class Player : MonoBehaviour
     }
     public PlayerAttacking playerAttackingScript { get { return _playerAttacking; } }
     public PlayerUI PlayerUI { get { return _playerUI; } }
+    public int Health { get { return _health; } }
+    public int Lives { get { return _lives; } }
+    public int PotionCount { get { return _bluePotions; } }
+    public int KeysCount { get { return _keys; } }
     //public float MagicProjectileSpeed { get { return _magicProjectileSpeed; } }
     #endregion
 
@@ -120,7 +125,9 @@ public class Player : MonoBehaviour
         if(_health <= 0)
         {
             //Destroy(gameObject);
-            DisablePlayer();
+            _lives--;
+            if(_lives <= 0)
+                DisablePlayer();
         }
     }
 
@@ -140,6 +147,7 @@ public class Player : MonoBehaviour
     {
         _class = input;
 
+        GameManager.Instance.MainUI.CreatePlayerScorecard(this);
         SetStatValues();
         SetAttackingInfo();
     }
