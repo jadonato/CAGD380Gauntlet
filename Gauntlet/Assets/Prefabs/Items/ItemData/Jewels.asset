@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Jewels
   m_EditorClassIdentifier: 
   _itemType: 9
-  _itemModel: {fileID: 6690268983535850802, guid: 6829b3ffbae32f949a04055063495812, type: 3}
+  _itemModel: {fileID: 6436999869909883412, guid: 085516be6aa48ec449eb291ab78cadf5, type: 3}
   _scoreReward: 500
   _healAmount: 0
