@@ -92,16 +92,19 @@ public class Death : MonoBehaviour, IDamageable
         }
 
     }
-
+    public void DeathDie(Player player)
+    {
+        player.Score += score;
+        Destroy(gameObject);
+    }
     private void OnTriggerEnter(Collider other)
     {
-        
     }
     private void OnTriggerExit(Collider other)
     {
 
     }
-
+    
 
     public void TakeDamage(float damage)
     {
@@ -114,6 +117,7 @@ public class Death : MonoBehaviour, IDamageable
     }
     public void Die()
     {
-        Destroy(gameObject);
+        
+       // 
     }
 }
