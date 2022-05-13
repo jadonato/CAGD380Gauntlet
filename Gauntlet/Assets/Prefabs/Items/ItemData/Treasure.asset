@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Treasure
   m_EditorClassIdentifier: 
   _itemType: 9
-  _itemModel: {fileID: 6690268983535850802, guid: 6829b3ffbae32f949a04055063495812, type: 3}
+  _itemModel: {fileID: 6436999869909883412, guid: d800241c105188e44b6822855c12c69f, type: 3}
   _scoreReward: 100
   _healAmount: 0
