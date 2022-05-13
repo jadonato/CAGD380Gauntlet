@@ -22,6 +22,11 @@ public class PlayerMagicProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+        }
+
         IDamageable damageable = other.GetComponent<IDamageable>();
 
         if (damageable != null)

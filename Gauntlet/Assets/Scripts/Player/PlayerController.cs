@@ -45,11 +45,12 @@ public class PlayerController : MonoBehaviour
         Vector3 newPos = new Vector3(_moveVec.x, 0, _moveVec.y).normalized * _speed * Time.fixedDeltaTime;
         transform.position += newPos;
 
+        /*
         if (Keyboard.current.eKey.IsPressed() || Gamepad.current.aButton.isPressed)
         {
             _player.openDoor();
         }
-        
+        */
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -110,6 +111,17 @@ public class PlayerController : MonoBehaviour
                 {
                     _player.UsePotion();
                 }
+            }
+        }
+    }
+
+    public void OpenDoor(InputAction.CallbackContext context)
+    {
+        if (context.performed && _player.isEnabled)
+        {
+            if (gameObject.activeInHierarchy)
+            {
+                _player.openDoor();
             }
         }
     }

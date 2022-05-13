@@ -49,6 +49,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""OpenDoor"",
+                    ""type"": ""Button"",
+                    ""id"": ""ed6b4ad1-f32d-4845-929f-92ebdcfdc094"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -183,6 +191,28 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""UsePotion"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f1f9933-80c2-465f-8968-f56b1a3124e9"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""OpenDoor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a7ade109-302e-4426-b76b-7c6c10f7f569"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""OpenDoor"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -223,6 +253,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_UsePotion = m_Player.FindAction("UsePotion", throwIfNotFound: true);
+        m_Player_OpenDoor = m_Player.FindAction("OpenDoor", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -276,6 +307,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_UsePotion;
+    private readonly InputAction m_Player_OpenDoor;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -284,6 +316,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @UsePotion => m_Wrapper.m_Player_UsePotion;
+        public InputAction @OpenDoor => m_Wrapper.m_Player_OpenDoor;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -305,6 +338,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @UsePotion.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUsePotion;
                 @UsePotion.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUsePotion;
                 @UsePotion.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUsePotion;
+                @OpenDoor.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenDoor;
+                @OpenDoor.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenDoor;
+                @OpenDoor.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnOpenDoor;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -321,6 +357,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @UsePotion.started += instance.OnUsePotion;
                 @UsePotion.performed += instance.OnUsePotion;
                 @UsePotion.canceled += instance.OnUsePotion;
+                @OpenDoor.started += instance.OnOpenDoor;
+                @OpenDoor.performed += instance.OnOpenDoor;
+                @OpenDoor.canceled += instance.OnOpenDoor;
             }
         }
     }
@@ -349,5 +388,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnUsePotion(InputAction.CallbackContext context);
+        void OnOpenDoor(InputAction.CallbackContext context);
     }
 }
