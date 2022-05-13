@@ -5,11 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    [SerializeField] private MainUI _mainUI;
 
     private bool _isPaused = false;
 
     #region Properties
     public bool IsPaused { get { return _isPaused; } }
+    public MainUI MainUI { get { return _mainUI; } }
     #endregion
 
     private void Awake()

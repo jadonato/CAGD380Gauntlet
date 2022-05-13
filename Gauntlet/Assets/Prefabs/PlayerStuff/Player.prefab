@@ -184,6 +184,7 @@ MonoBehaviour:
   _score: 0
   isEnabled: 0
   _health: 700
+  _lives: 3
   _maxHealth: 700
   _meleeDamage: 0
   _magicDamage: 0
@@ -193,7 +194,6 @@ MonoBehaviour:
   _potionDamage: 0
   _attackCooldownSeconds: 0.25
   _bluePotions: 0
-  _orangePotions: 0
   _keys: 0
   _itemsAmount: 0
   _maxItems: 12

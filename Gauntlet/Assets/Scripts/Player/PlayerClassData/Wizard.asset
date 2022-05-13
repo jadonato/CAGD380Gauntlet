@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e23e378b69e6eee4dbb031d3943e0bde, type: 3}
   m_Name: Wizard
   m_EditorClassIdentifier: 
+  _name: Wizard
   _sprite: {fileID: 0}
   _classColor: {r: 0, g: 0, b: 1, a: 0}
   _baseHealth: 700
