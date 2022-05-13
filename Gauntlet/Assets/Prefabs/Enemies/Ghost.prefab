@@ -67,7 +67,10 @@ MonoBehaviour:
   accessories:
   - {fileID: 6353366313037353752}
   alerted: 1
+  bagOfJewels: {fileID: 0}
   playerList: []
+  hasBag: 0
+  enemyName: Ghost
   kamikazeRange: 1.5
 --- !u!23 &6453586357276067478
 MeshRenderer:

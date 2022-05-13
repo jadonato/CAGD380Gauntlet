@@ -22,6 +22,7 @@ public class CoreEnemy : MonoBehaviour, IDamageable
     protected bool zigLeft;
     protected bool zigZag = false;
     public bool hasBag;
+    public string enemyName;
 
     
     protected void moveToTarget()
@@ -157,7 +158,7 @@ public class CoreEnemy : MonoBehaviour, IDamageable
     }
     public void Die()
     {
-        
+        GameManager.Instance.CreateAnnouncement("You have slain a " + enemyName);
         Destroy(gameObject);
     }
 }

@@ -100,7 +100,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 8269682a895dfd345801eead5b5d69f6, type: 2}
   accessories: []
   alerted: 1
+  bagOfJewels: {fileID: 0}
   playerList: []
+  hasBag: 0
+  enemyName: Grunt
   meleeEngagementRange: 5
   hitCollider: {fileID: 6837564445300522257}
 --- !u!54 &210538292618886212

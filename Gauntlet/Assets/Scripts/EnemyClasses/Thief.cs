@@ -17,6 +17,8 @@ public class Thief : CoreEnemy
         agent.speed = speed;
 
         StartCoroutine(ZigZag());
+
+        GameManager.Instance.CreateAnnouncement("You hear the clinging of coins");
     }
 
     // Update is called once per frame

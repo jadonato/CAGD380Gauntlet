@@ -17,7 +17,7 @@ public class Death : MonoBehaviour, IDamageable
     // Start is called before the first frame update
     void Start()
     {
-        //GameManager.Instance.CreateAnnouncement("You have slain Death!");
+        GameManager.Instance.CreateAnnouncement("You feel a cold wind travel down your spine");
     }
 
     // Update is called once per frame

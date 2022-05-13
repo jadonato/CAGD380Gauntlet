@@ -10079,6 +10079,7 @@ MonoBehaviour:
   bagOfJewels: {fileID: 0}
   playerList: []
   hasBag: 0
+  enemyName: Sorcerer
   invisibilityDuration: 1
   invisibilityCooldown: 2
   meleeEngagementRange: 5

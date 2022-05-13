@@ -165,7 +165,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7f25fba68a10f9448a86454d2226e2f3, type: 2}
   accessories: []
   alerted: 1
+  bagOfJewels: {fileID: 0}
   playerList: []
+  hasBag: 0
+  enemyName: Lobber
   Range: 15
   projectileSpeed: 3
   firingRate: 2

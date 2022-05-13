@@ -165,7 +165,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 405c05551df05be478b2e6739df707ee, type: 2}
   accessories: []
   alerted: 1
+  bagOfJewels: {fileID: 0}
   playerList: []
+  hasBag: 0
+  enemyName: Demon
   Range: 5
   projectileSpeed: 1
   firingRate: 1
