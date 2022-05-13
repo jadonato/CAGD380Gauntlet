@@ -9,6 +9,7 @@ TagManager:
   - SpawnPoint
   - BigRoom
   - Exit
+  - Wall
   layers:
   - Default
   - TransparentFX
