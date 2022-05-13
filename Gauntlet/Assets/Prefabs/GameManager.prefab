@@ -47,6 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainUI: {fileID: 4834807937220445885}
+  _announcementTime: 5
+  _cameraController: {fileID: 1182193830420334921}
+  _playerManager: {fileID: 4834807936582434427}
 --- !u!114 &4834807936582434427
 MonoBehaviour:
   m_ObjectHideFlags: 0

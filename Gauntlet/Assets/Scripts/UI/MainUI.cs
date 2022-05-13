@@ -44,5 +44,10 @@ public class MainUI : MonoBehaviour
         _announcementText.text = text;
         _timer = duration;
     }
+
+    public void ClearAnnouncement()
+    {
+        _timer = 0f;
+    }
     #endregion
 }
