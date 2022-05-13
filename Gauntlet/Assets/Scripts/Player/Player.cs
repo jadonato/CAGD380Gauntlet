@@ -153,7 +153,7 @@ public class Player : MonoBehaviour
             }
             foreach(Death death in FindObjectsOfType<Death>())
             {
-                death.Die();
+                death.DeathDie(this);
             }
         }
     }

@@ -315,7 +315,19 @@ MonoBehaviour:
     m_ActionId: c48a6955-5495-4b53-9ee7-eebe1181d367
     m_ActionName: Player/Pause[/Keyboard/escape,/XInputControllerWindows/start]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1151373873990222494}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Potion
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 2444dba8-63f4-4707-82a5-e601b00899ff
     m_ActionName: Player/UsePotion[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 1

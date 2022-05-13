@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b687068053c9ed49836342c0ab4bc8f, type: 3}
+  m_Name: Jewels
+  m_EditorClassIdentifier: 
+  _itemType: 9
+  _itemModel: {fileID: 6690268983535850802, guid: 6829b3ffbae32f949a04055063495812, type: 3}
+  _scoreReward: 500
+  _healAmount: 0
