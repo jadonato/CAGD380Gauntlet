@@ -142,6 +142,7 @@ public class Player : MonoBehaviour
     {
         if(_bluePotions > 0)
         {
+            _bluePotions--;
             foreach(CoreEnemy enemy in FindObjectsOfType<CoreEnemy>())
             {
                 enemy.TakeDamage(_potionDamage);
@@ -149,6 +150,10 @@ public class Player : MonoBehaviour
             foreach(Generator generator in FindObjectsOfType<Generator>())
             {
                 generator.TakeDamage(_potionDamage);
+            }
+            foreach(Death death in FindObjectsOfType<Death>())
+            {
+                death.Die();
             }
         }
     }
