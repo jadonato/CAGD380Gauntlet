@@ -16,10 +16,12 @@ public class CoreEnemy : MonoBehaviour, IDamageable
 
 
     protected GameObject target;
+    public GameObject bagOfJewels;
     public List<GameObject> playerList = new List<GameObject>();
     protected NavMeshAgent agent;
     protected bool zigLeft;
     protected bool zigZag = false;
+    public bool hasBag;
 
     
     protected void moveToTarget()
@@ -123,7 +125,13 @@ public class CoreEnemy : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        print(gameObject + " take damage");
         health -= damage;
+        if (hasBag)
+        {
+            Instantiate(bagOfJewels, new Vector3(transform.position.x, transform.position.y - 1, transform.position.z), Quaternion.identity);
+            hasBag = false;
+        }
         if (health <= 0)
         {
             Die();
@@ -135,6 +143,7 @@ public class CoreEnemy : MonoBehaviour, IDamageable
     }
     public void Die()
     {
+        
         Destroy(gameObject);
     }
 }

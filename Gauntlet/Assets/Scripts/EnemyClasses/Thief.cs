@@ -7,6 +7,7 @@ public class Thief : CoreEnemy
 {
     public float meleeEngagementRange;
     public GameObject hitCollider;
+    public int stolenScore;
     private bool isAttacking;
     // Start is called before the first frame update
     void Start()
@@ -23,15 +24,38 @@ public class Thief : CoreEnemy
     {
 
         findTargets();
-        if (alerted && playerList.Count > 0)
+        if (alerted && playerList.Count > 0 )
         {
-            closestPlayer();
-            moveToTarget();
-            stealAttack();
+            if (!hasBag)
+            {
+                closestPlayer();
+                agent.destination = target.transform.position;
+                if (Vector3.Distance(transform.position, target.transform.position) <= agent.stoppingDistance)
+                {
+                    Transform temp = target.transform;
+                    temp.position = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+                    transform.LookAt(target.transform);
+                    agent.speed = 0;
+                }
+                else
+                {
+                    agent.speed = speed;
+                }
+                stealAttack();
+            }
+            else
+            {
+                print("Thief's target is " + target);
+            }
         }
     }
 
-
+    public void escape(int score)
+    {
+        stolenScore = score;
+        target = FindObjectOfType<LevelManager>().gameObject;
+        agent.SetDestination(target.transform.position);
+    }
 
     private void stealAttack()
     {
@@ -45,7 +69,7 @@ public class Thief : CoreEnemy
     {
         isAttacking = true;
         hitCollider.SetActive(true);
-        hitCollider.GetComponent<meleeDamage>().damage = attackDamage[rank];
+        hitCollider.GetComponent<meleeDamage>().damage = attackDamage[0];
         yield return new WaitForSeconds(0.5f);
         hitCollider.SetActive(false);
         yield return new WaitForSeconds(1.5f);
@@ -60,6 +84,10 @@ public class Thief : CoreEnemy
             Destroy(other.gameObject);
         }
         checkForZig(other, true);
+        if (other.GetComponent<LevelManager>())
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnTriggerExit(Collider other)
     {

@@ -63,7 +63,7 @@ public class Demon : CoreEnemy
         dir = new Vector3(dir.x, 0, dir.z);
         GameObject temp = projectile;
         temp.GetComponent<Projectile>().speed = projectileSpeed;
-        temp.GetComponent<Projectile>().damage = attackDamage[rank];
+        temp.GetComponent<Projectile>().damage = attackDamage[rank - 1];
         temp.GetComponent<Projectile>().source = gameObject;
         temp.GetComponent<Projectile>().dir = dir;
         Instantiate(temp, transform.position + (transform.forward * 2), Quaternion.identity);

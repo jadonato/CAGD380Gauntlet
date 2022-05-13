@@ -46,7 +46,7 @@ public class Grunt : CoreEnemy
     {
         isAttacking = true;
         hitCollider.SetActive(true);
-        hitCollider.GetComponent<meleeDamage>().damage = attackDamage[rank];
+        hitCollider.GetComponent<meleeDamage>().damage = attackDamage[rank - 1];
         yield return new WaitForSeconds(0.5f);
         hitCollider.SetActive(false);
         yield return new WaitForSeconds(1.5f);
