@@ -27,13 +27,13 @@ public class Thief : CoreEnemy
         {
             closestPlayer();
             moveToTarget();
-            clubAttack();
+            stealAttack();
         }
     }
 
 
 
-    private void clubAttack()
+    private void stealAttack()
     {
         if (Vector3.Distance(transform.position, target.transform.position) <= meleeEngagementRange && !isAttacking)
         {

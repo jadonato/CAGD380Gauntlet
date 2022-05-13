@@ -23,16 +23,13 @@ public class Door : MonoBehaviour
 
     public void openDoor()
     {
-        if (!isLocked)
+        if (alertList.Length > 0)
         {
-            if (alertList.Length > 0)
-            {
-                alertEnemies();
-            }
-            
-            Destroy(gameObject);
+            alertEnemies();
         }
-        
+
+        Destroy(gameObject);
+
     }
 
     private void alertEnemies()
