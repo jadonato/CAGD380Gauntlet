@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     [SerializeField] private MainUI _mainUI;
+    [SerializeField] private float _announcementTime = 5f;
 
     private bool _isPaused = false;
 
@@ -43,6 +44,11 @@ public class GameManager : MonoBehaviour
         }
 
         _isPaused = input;
+    }
+
+    public void CreateAnnouncement(string text)
+    {
+        _mainUI.CreateAnnouncement(text, _announcementTime);
     }
 
     private void SetAllPlayersEnabled(bool input)
