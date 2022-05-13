@@ -7,9 +7,9 @@ public class Death : MonoBehaviour, IDamageable
 {
     public float drainRange;
     public float drainDamagePerFrame;
-    public float[] scoreList;
+    public int[] scoreList;
     public float speed;
-    private int score;
+    private int score = 0;
     private float damageDealt;
     private bool draining;
     protected GameObject target;
@@ -94,7 +94,7 @@ public class Death : MonoBehaviour, IDamageable
     }
     public void DeathDie(Player player)
     {
-        player.Score += score;
+        player.Score += scoreList[score];
         Destroy(gameObject);
     }
     private void OnTriggerEnter(Collider other)
@@ -108,7 +108,15 @@ public class Death : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
-        
+        if(score < scoreList.Length)
+        {
+            score += 1;
+        }
+        else
+        {
+            score = 0;
+        }
+        print("new score is " + scoreList[score]);
     }
 
     public void Heal(float heal)
