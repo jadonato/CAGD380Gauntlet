@@ -44,10 +44,10 @@ public class CameraControl : MonoBehaviour
 
     private void adjustCameraPos()
     {
-        Vector3 temp = playerList[0].transform.position;
-        for (int p = 1; p < playerList.Count; p++)
+        Vector3 temp = Vector3.zero;
+        for (int p = 0; p < playerList.Count; p++)
         {
-            if (playerList[p].GetComponent<Player>().isEnabled)
+            if (!playerList[p].GetComponent<Player>().isDead)
             {
 
                 temp += playerList[p].transform.position;

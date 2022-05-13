@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Player _player;
     private Rigidbody _rb;
+    public Button pauseButton;
     #endregion
 
     #region Properties
@@ -43,7 +45,7 @@ public class PlayerController : MonoBehaviour
         Vector3 newPos = new Vector3(_moveVec.x, 0, _moveVec.y).normalized * _speed * Time.fixedDeltaTime;
         transform.position += newPos;
 
-        if (Keyboard.current.eKey.IsPressed())
+        if (Keyboard.current.eKey.IsPressed() || Gamepad.current.aButton.isPressed)
         {
             _player.openDoor();
         }
@@ -92,6 +94,7 @@ public class PlayerController : MonoBehaviour
                 {
                     //Debug.Log("Pausing");
                     _player.PlayerUI.PauseGame();
+                    pauseButton.Select();
                 }
             }
         }

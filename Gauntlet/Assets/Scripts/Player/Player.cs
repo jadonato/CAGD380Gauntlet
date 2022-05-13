@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerController))]
 public class Player : MonoBehaviour
@@ -57,6 +58,8 @@ public class Player : MonoBehaviour
 
     [Header("Object References")]
     public GameObject door;
+    public Button classButton;
+
     #endregion
 
     #region Properties
@@ -87,7 +90,7 @@ public class Player : MonoBehaviour
         _controller = GetComponent<PlayerController>();
         //_playerUI = GetComponent<PlayerUI>();
         //_playerAttacking = gameObject.GetComponent<PlayerAttacking>();
-
+        classButton.Select();
         //SetStatValues();
         //SetAttackingInfo();
         _mainMat = GetComponent<MeshRenderer>().material;       
@@ -456,8 +459,10 @@ public class Player : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("SpawnPoint") != null)
         {
+            
             _spawnpoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform.position;
             transform.position = _spawnpoint;
+            print("Went to spawn point");
         }
     }
     #endregion

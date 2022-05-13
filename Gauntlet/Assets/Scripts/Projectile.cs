@@ -26,10 +26,13 @@ public class Projectile : MonoBehaviour
             print("Projectile deals damage");
             other.GetComponent<Player>().takeDamage(damage);
         }
-        if(other.GetComponent<Item>().isDestructable)
+        if (other.GetComponent<Item>())
         {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+            if (other.GetComponent<Item>().isDestructable)
+            {
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+            }
         }
         if (other.tag != "BigRoom" && !other.GetComponent<PlayerAttacking>() && other.tag != "Projectile")
         {
