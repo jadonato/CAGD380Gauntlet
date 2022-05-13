@@ -53,6 +53,7 @@ public class Generator : MonoBehaviour, IDamageable
     }
     public void Die()
     {
+        GameManager.Instance.CreateAnnouncement("You have destroyed a generator");
         Destroy(gameObject);
     }
 

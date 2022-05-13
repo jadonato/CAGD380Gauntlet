@@ -10,7 +10,9 @@ public class Player : MonoBehaviour
     [Header("Player Info")]
     [SerializeField] private PlayerClassData _class;
     [SerializeField] private int _score;
+    [SerializeField] private float _respawnTime = 5f;
     public bool isEnabled = true;
+    public bool isDead = false;
 
     [Header("Player Stats")]
     [SerializeField] private int _health;
@@ -130,8 +132,25 @@ public class Player : MonoBehaviour
         {
             //Destroy(gameObject);
             _lives--;
-            if(_lives <= 0)
-                DisablePlayer();
+            if (_lives <= 0)
+            {
+                isDead = true;
+                isEnabled = false;
+                transform.position -= Vector3.up * 10f;
+                GameManager.Instance.GameOver();
+            }
+            else
+            {
+                if(_lives != 1)
+                {
+                    GameManager.Instance.CreateAnnouncement("You died! You only have " + _lives + " left.");
+                }
+                else
+                {
+                    GameManager.Instance.CreateAnnouncement("You only have 1 life left! You should probably be more careful.");
+                }
+                StartCoroutine(RespawnCycle());
+            }
         }
     }
 
@@ -171,6 +190,7 @@ public class Player : MonoBehaviour
             }
             foreach(Death death in FindObjectsOfType<Death>())
             {
+                GameManager.Instance.CreateAnnouncement("You have slain Death!");
                 death.DeathDie(this);
             }
         }
@@ -214,6 +234,7 @@ public class Player : MonoBehaviour
                 {
                     _bluePotions++;
                     _itemsAmount++;
+                    GameManager.Instance.CreateAnnouncement("You got a potion!");
                 }
                 else
                     return;
@@ -223,6 +244,7 @@ public class Player : MonoBehaviour
                 {
                     _bluePotions++;
                     _itemsAmount++;
+                    GameManager.Instance.CreateAnnouncement("You got a potion!");
                 }
                 else
                     return;
@@ -232,6 +254,7 @@ public class Player : MonoBehaviour
                 {
                     _keys++;
                     _itemsAmount++;
+                    GameManager.Instance.CreateAnnouncement("You got a key!");
                 }
                 else
                     return;
@@ -241,6 +264,7 @@ public class Player : MonoBehaviour
                 {
                     _armor += _armorIncrease;
                     _hasArmorPot = true;
+                    GameManager.Instance.CreateAnnouncement("You have gained more armor!");
                 }
                 else
                 {
@@ -248,6 +272,7 @@ public class Player : MonoBehaviour
                     {
                         _bluePotions++;
                         _itemsAmount++;
+                        GameManager.Instance.CreateAnnouncement("You got a potion!");
                     }
                     else
                         return;
@@ -258,6 +283,7 @@ public class Player : MonoBehaviour
                 {
                     _potionDamage += _potionDamageIncrease;
                     _hasPotionPot = true;
+                    GameManager.Instance.CreateAnnouncement("You have gained more magic damage!");
                 }
                 else
                 {
@@ -265,6 +291,7 @@ public class Player : MonoBehaviour
                     {
                         _bluePotions++;
                         _itemsAmount++;
+                        GameManager.Instance.CreateAnnouncement("You got a potion!");
                     }
                     else
                         return;
@@ -275,6 +302,7 @@ public class Player : MonoBehaviour
                 {
                     _magicDamage += _magicDamageIncrease;
                     _hasMagicDamagePot = true;
+                    GameManager.Instance.CreateAnnouncement("You have gained more shot damage!");
                 }
                 else
                 {
@@ -282,6 +310,7 @@ public class Player : MonoBehaviour
                     {
                         _bluePotions++;
                         _itemsAmount++;
+                        GameManager.Instance.CreateAnnouncement("You got a potion!");
                     }
                     else
                         return;
@@ -292,6 +321,7 @@ public class Player : MonoBehaviour
                 {
                     _magicProjectileSpeed += _magicSpeedIncrease;
                     _hasMagicSpeedPot = true;
+                    GameManager.Instance.CreateAnnouncement("You have gained more shot speed!");
                 }
                 else
                 {
@@ -299,6 +329,7 @@ public class Player : MonoBehaviour
                     {
                         _bluePotions++;
                         _itemsAmount++;
+                        GameManager.Instance.CreateAnnouncement("You got a potion!");
                     }
                     else
                         return;
@@ -309,6 +340,7 @@ public class Player : MonoBehaviour
                 {
                     _meleeDamage += _meleeDamageIncrease;
                     _hasMeleeDamagePot = true;
+                    GameManager.Instance.CreateAnnouncement("You have gained more melee damage!");
                 }
                 else
                 {
@@ -316,6 +348,7 @@ public class Player : MonoBehaviour
                     {
                         _bluePotions++;
                         _itemsAmount++;
+                        GameManager.Instance.CreateAnnouncement("You got a potion!");
                     }
                     else
                         return;
@@ -326,6 +359,7 @@ public class Player : MonoBehaviour
                 {
                     _moveSpeed += _moveSpeedIncrease;
                     _hasMoveSpeedPot = true;
+                    GameManager.Instance.CreateAnnouncement("You have gained more move speed!");
                 }
                 else
                 {
@@ -333,6 +367,7 @@ public class Player : MonoBehaviour
                     {
                         _bluePotions++;
                         _itemsAmount++;
+                        GameManager.Instance.CreateAnnouncement("You got a potion!");
                     }
                     else
                         return;
@@ -340,18 +375,23 @@ public class Player : MonoBehaviour
                 break;
             case ItemType.Treasure:
                 _score += item.ItemData.ScoreReward;
+                GameManager.Instance.CreateAnnouncement("You got a treasure worth " + item.ItemData.ScoreReward + " points!");
                 break;
             case ItemType.BagOfJewels:
                 _score += item.ItemData.ScoreReward;
+                GameManager.Instance.CreateAnnouncement("You got a treasure worth " + item.ItemData.ScoreReward + " points!");
                 break;
             case ItemType.FoodSmall:
                 Heal(item.ItemData.HealAmount);
+                GameManager.Instance.CreateAnnouncement("You have healed " + item.ItemData.HealAmount + " health");
                 break;
             case ItemType.FoodMedium:
                 Heal(item.ItemData.HealAmount);
+                GameManager.Instance.CreateAnnouncement("You have healed " + item.ItemData.HealAmount + " health");
                 break;
             case ItemType.FoodLarge:
                 Heal(item.ItemData.HealAmount);
+                GameManager.Instance.CreateAnnouncement("You have healed " + item.ItemData.HealAmount + " health");
                 break;
             default:
                 break;
@@ -381,6 +421,26 @@ public class Player : MonoBehaviour
 
         takeDamage(1f);
         StartCoroutine(HealthDecayCycle());
+    }
+
+    private IEnumerator RespawnCycle()
+    {
+        //disable player
+        DisablePlayer();
+        transform.position -= Vector3.up * 10f;
+
+        //Wait a few seconds
+        float timer = 0f;
+        while(timer < _respawnTime)
+        {
+            yield return new WaitForEndOfFrame();
+            timer += Time.deltaTime;
+        }
+
+        //Heal and reenable player
+        Heal(700);
+        transform.position += Vector3.up * 10f;
+        isEnabled = true;
     }
 
     private void OnTriggerEnter(Collider other)

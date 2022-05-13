@@ -14,7 +14,7 @@ public class PlayerScoreCard : MonoBehaviour
 
     private void Update()
     {
-        if(player.gameObject.activeInHierarchy && player != null)
+        if(player != null && player.gameObject.activeInHierarchy)
         {
             UpdateTextElements();
         }
