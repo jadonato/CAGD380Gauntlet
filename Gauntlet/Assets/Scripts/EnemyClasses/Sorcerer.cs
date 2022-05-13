@@ -15,7 +15,9 @@ public class Sorcerer : CoreEnemy
     void Start()
     {
         rankCheck();
+        print("Get agent");
         agent = GetComponent<NavMeshAgent>();
+        print("Agent is apart of " + agent.gameObject);
         agent.speed = speed;
         findTargets();
         StartCoroutine(ZigZag());
@@ -28,6 +30,7 @@ public class Sorcerer : CoreEnemy
         findTargets();
         if (alerted && playerList.Count > 0)
         {
+            print("Sorcerer is still active with " + target);
             closestPlayer();
             moveToTarget();
             meleeAttack();
@@ -50,8 +53,12 @@ public class Sorcerer : CoreEnemy
             lightning[i].Play();
         }
         hitCollider.SetActive(true);
-        hitCollider.GetComponent<meleeDamage>().damage = attackDamage[rank];
-        yield return new WaitForSeconds(lightning[0].duration);
+        hitCollider.GetComponent<meleeDamage>().damage = attackDamage[rank - 1];
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < lightning.Length; i++)
+        {
+            lightning[i].Stop();
+        }
         hitCollider.SetActive(false);
         yield return new WaitForSeconds(1);
         isAttacking = false;

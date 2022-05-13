@@ -4953,7 +4953,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5724295618532777577}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5007,7 +5007,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ba69b3d2b8fb3f46bbe0bed8e811f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 8
+  canSteal: 0
 --- !u!1 &6001014479170650412
 GameObject:
   m_ObjectHideFlags: 0
@@ -10057,7 +10058,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
-  healthMod: []
+  healthMod:
+  - 5
+  - 10
+  - 15
   speed: 3
   attackDamage:
   - 5
@@ -10072,7 +10076,9 @@ MonoBehaviour:
   - {fileID: 6257610828672126018}
   - {fileID: 6257610828160639723}
   alerted: 1
+  bagOfJewels: {fileID: 0}
   playerList: []
+  hasBag: 0
   invisibilityDuration: 1
   invisibilityCooldown: 2
   meleeEngagementRange: 5

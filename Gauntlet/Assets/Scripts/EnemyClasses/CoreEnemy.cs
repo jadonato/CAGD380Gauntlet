@@ -55,6 +55,7 @@ public class CoreEnemy : MonoBehaviour, IDamageable
     {
         if (rank > 0)
         {
+            print("Rank color is " + (rank - 1));
             GetComponent<MeshRenderer>().material = rankColor[rank - 1];
             for(int a = 0; a < accessories.Length; a++)
             {
@@ -62,7 +63,7 @@ public class CoreEnemy : MonoBehaviour, IDamageable
             }
             for(int h = 0; h < healthMod.Length; h++)
             {
-                health += healthMod[h];
+                health += healthMod[rank - 1];
             }
         }
     }
@@ -73,7 +74,20 @@ public class CoreEnemy : MonoBehaviour, IDamageable
         {
             foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
             {
-                playerList.Add(player);
+                bool temp = false;
+                for (int p = 0; p < playerList.Count; p++)
+                {
+                    if (player == playerList[p])
+                    {
+                        temp = true;
+                    }
+                }
+                if (!temp)
+                {
+                    target = player;
+                    playerList.Add(player);
+                }
+                
             }
         }
         

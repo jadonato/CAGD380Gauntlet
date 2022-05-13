@@ -40,6 +40,7 @@ public class Door : MonoBehaviour
             {
                 if (alertList[e].GetComponent<CoreEnemy>())
                 {
+
                     alertList[e].GetComponent<CoreEnemy>().alerted = true;
                 }
                 if (alertList[e].GetComponent<Generator>())
